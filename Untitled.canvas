@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"66dc04371c7d801d","type":"text","text":"","x":-560,"y":-160,"width":250,"height":160,"color":"5"},
+		{"id":"d2497e46a913785c","type":"text","text":"","x":0,"y":0,"width":250,"height":60,"color":"1"},
+		{"id":"cd6db25c2bb4d349","type":"file","file":"Welcome.md","x":-150,"y":120,"width":400,"height":400}
+	],
+	"edges":[
+		{"id":"7ffe2fc229dfc01d","fromNode":"66dc04371c7d801d","fromSide":"bottom","toNode":"d2497e46a913785c","toSide":"left","fromEnd":"arrow","color":"6","label":"bullshit excali"}
+	]
+}
