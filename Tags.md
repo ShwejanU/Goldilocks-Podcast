@@ -3,6 +3,9 @@ ___
 
 Alive 
 - age range 
+	- 
+	- 18-22
+	- Under 18
 
 Passed
 - life timeline
