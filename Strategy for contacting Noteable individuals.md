@@ -1,2 +1,3 @@
-Current Interview accumulation strage
+Current Interviee accumulation strategy
+	
 Interview Protocols
