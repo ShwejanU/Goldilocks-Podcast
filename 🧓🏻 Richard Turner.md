@@ -15,7 +15,7 @@ ____
 
 **MUST BE PERSONALIZED RECORDED VOICE/AUDIO**
 
-Hey Richard, I’ve always been fascinated by your card mechanic control and that’s always been a part of me that always wanted to understand it and has never been able to understand it. We’re actually engineers ourselves and we researched AI similar to how AI is so simple but it becomes very hard to grasp overtime. I think that your car dealing is like that, and it is an absolute beautiful display of the feats that humans can do. I would love it if you can be the first person that starts our podcast and the opener video for our podcast it would be an absolute honor. 
+Hey Richard, I’ve always been fascinated by your card mechanic control and that’s always been a part of me that always wanted to understand it and has never been able to understand it. We’re actually engineers ourselves and we do AI research, similar to (how AI is so simple but it becomes very hard to grasp overtime) fix it . I think that your carddealing is like that, and it is an absolute beautiful display of the feats that humans can do. I would love it if you can be the first person that starts our podcast and the opener video for our podcast it would be an absolute honor. 
 
 You might be wondering why we’re asking you on the podcast(phrase more respectfully)
 
