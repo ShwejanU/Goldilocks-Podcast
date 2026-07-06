@@ -1,3 +1,3 @@
 Current Interviewee accumulation strategy
-- C
+- First- Focus on low hanging fruit- 
 Interview Protocols
