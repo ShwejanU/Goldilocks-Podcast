@@ -1,4 +1,4 @@
-To speak to great things and great and to pick their minds apart. To understand their life stories. 
+To speak to great things and great people and to pick their minds apart. To understand their life stories. 
 ___ 
 # Goldilocks Podcast *Origin of the name* 
 The name comes from the famous story of Goldilocks and the three bears. Goldilocks tries each bears items and life’s choices but there was no definitive choice that one was right. She picked and chose the option that was right for her. We think life is similar. No one’s path is going to be right for you but by giving you a plethora of paths to hear from Maybe one might resonate with you. And so you take a piece of our podcast with you for the rest of your life. 
