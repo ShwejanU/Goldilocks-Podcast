@@ -39,5 +39,5 @@ Profession(s)
 - Employee
 
 
-College 
+- College 
 
