@@ -10,7 +10,9 @@ First: Focus on the closest nodes- immediate network + interesting individuals w
 	- Domain of old companies 
 	- It’ll likely follow a pattern of their name 
 	- Write down other tricks 
-	- continue 
+	- try to guess email and see if it shows up on Gmail pfp 
+	- University emails 
 - phone number (what does the area code)
+
 
 
