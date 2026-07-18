@@ -11,8 +11,10 @@ First: Focus on the closest nodes- immediate network + interesting individuals w
 	- It’ll likely follow a pattern of their name 
 	- Write down other tricks 
 	- try to guess email and see if it shows up on Gmail pfp 
-	- University emails 
+	- University emails naming pattern 
 - phone number (what does the area code)
+
+Where are they physically 
 
 
 
