@@ -71,7 +71,8 @@
 			"autoResize": true,
 			"index": "a2",
 			"hasTextLink": false,
-			"rawText": "Interactive Dashboard Agent"
+			"rawText": "Interactive Dashboard Agent",
+			"link": null
 		},
 		{
 			"id": "rightheaderrect",
@@ -141,13 +142,14 @@
 			"autoResize": true,
 			"index": "a4",
 			"hasTextLink": false,
-			"rawText": "Slack + Obsidian Agent"
+			"rawText": "Slack + Obsidian Agent",
+			"link": null
 		},
 		{
 			"id": "leftbodyrect",
 			"type": "rectangle",
-			"x": 80,
-			"y": 200.39938836186138,
+			"x": 79.86473630620611,
+			"y": 200.26381948550443,
 			"width": 561.9885569412614,
 			"height": 437.60560805557867,
 			"angle": 0,
@@ -164,8 +166,8 @@
 				"type": 3
 			},
 			"seed": 106,
-			"version": 70,
-			"versionNonce": 1291258712,
+			"version": 72,
+			"versionNonce": 1137269592,
 			"isDeleted": false,
 			"boundElements": [
 				{
@@ -173,7 +175,7 @@
 					"id": "9pJ6CTkh"
 				}
 			],
-			"updated": 1784523654444,
+			"updated": 1784524116835,
 			"link": null,
 			"locked": false,
 			"index": "a5",
@@ -182,10 +184,10 @@
 		{
 			"id": "9pJ6CTkh",
 			"type": "text",
-			"x": 85,
-			"y": 289.2021923896507,
+			"x": 84.86473630620611,
+			"y": 269.06662351329373,
 			"width": 528.7354736328125,
-			"height": 260,
+			"height": 300,
 			"angle": 0,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
@@ -199,20 +201,20 @@
 			"index": "a5V",
 			"roundness": null,
 			"seed": 1746887720,
-			"version": 40,
-			"versionNonce": 229367896,
+			"version": 61,
+			"versionNonce": 956726568,
 			"isDeleted": false,
-			"boundElements": null,
-			"updated": 1784523654444,
+			"boundElements": [],
+			"updated": 1784524126104,
 			"locked": false,
-			"text": "• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work\nhappens\n\n• Outreach + Marketing playbooks live next to the tasks that use\nthem (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly\ncontribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great\nfor deep planning & research-backed decisions",
-			"rawText": "• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
+			"text": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work\nhappens\n\n• Outreach + Marketing playbooks live next to the tasks that use\nthem (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly\ncontribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great\nfor deep planning & research-backed decisions",
+			"rawText": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
 			"fontSize": 16,
 			"fontFamily": 5,
 			"textAlign": "left",
 			"verticalAlign": "middle",
 			"containerId": "leftbodyrect",
-			"originalText": "• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
+			"originalText": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
 			"autoResize": true,
 			"lineHeight": 1.25,
 			"hasTextLink": false
@@ -276,7 +278,7 @@
 			"version": 169,
 			"versionNonce": 1328032344,
 			"isDeleted": false,
-			"boundElements": null,
+			"boundElements": [],
 			"updated": 1784522945589,
 			"locked": false,
 			"text": "• A report that comes TO us, nothing new to open, remember, or\nmaintain (you mentioned creating an agent at some point to give us\nimprovement metrics) \n\n• Zero new tools: write where we already work (Obsidian), read where\nwe already talk (Slack)\n\n• Least friction, easiest to start, no browser setup, no cron jobs,\nnothing that can silently break\n\n• Daily insight delivered automatically: pace vs goals, who's carrying the\nweek, what's stalled, top task each person\n\n• Lowest admin overhead of anything we could build- pure signal, no\nupkeep",
@@ -289,7 +291,8 @@
 			"originalText": "• A report that comes TO us, nothing new to open, remember, or maintain (you mentioned creating an agent at some point to give us improvement metrics) \n\n• Zero new tools: write where we already work (Obsidian), read where we already talk (Slack)\n\n• Least friction, easiest to start, no browser setup, no cron jobs, nothing that can silently break\n\n• Daily insight delivered automatically: pace vs goals, who's carrying the week, what's stalled, top task each person\n\n• Lowest admin overhead of anything we could build- pure signal, no upkeep",
 			"autoResize": true,
 			"lineHeight": 1.25,
-			"hasTextLink": false
+			"hasTextLink": false,
+			"link": null
 		},
 		{
 			"id": "recrect",
@@ -359,7 +362,8 @@
 			"autoResize": true,
 			"index": "aA",
 			"hasTextLink": false,
-			"rawText": "Least friction, lowest admin overhead- fastest way to \nget real insight flowing."
+			"rawText": "Least friction, lowest admin overhead- fastest way to \nget real insight flowing.",
+			"link": null
 		},
 		{
 			"id": "bottomrect",
@@ -420,7 +424,7 @@
 			"version": 1073,
 			"versionNonce": 1330420008,
 			"isDeleted": false,
-			"boundElements": null,
+			"boundElements": [],
 			"updated": 1784523568348,
 			"locked": false,
 			"text": "\n\nAn agent that can actually give us insights and report progress every single day is a system that can create HIGH agency. A system is simply a\nway to build high agency, and either of these two agents systems that do just that. By having insights that measure and check progress every\nsingle day, we are able to actually DO and not just THINK, and in a way that keeps us accountable and measures progress and how close we are\ntowards reaching our goals with this podcast. It turns \"we should probably check on outreach\" (similar to what we say ALL the time) into a fact\nsomeone has to respond to each morning. That's what high agency actually looks like: closing gaps proactively instead of waiting to be told. The\nDashboard builds agency by giving us tools to research, decide, and build our own systems by hand. This can also be buildable as we grow the\npodcast, and we can turn it into our own all-in-one website for our insights, like Salesforce. The Slack standup builds agency by creating easier,\ndaily accountability that never lets momentum die and because it has almost no setup cost, it's the one we should get running first, and it\nremoves MUCH of the friction that you might mention would be included with these agents. ",
@@ -433,7 +437,8 @@
 			"originalText": "\n\nAn agent that can actually give us insights and report progress every single day is a system that can create HIGH agency. A system is simply a way to build high agency, and either of these two agents systems that do just that. By having insights that measure and check progress every single day, we are able to actually DO and not just THINK, and in a way that keeps us accountable and measures progress and how close we are towards reaching our goals with this podcast. It turns \"we should probably check on outreach\" (similar to what we say ALL the time) into a fact someone has to respond to each morning. That's what high agency actually looks like: closing gaps proactively instead of waiting to be told. The Dashboard builds agency by giving us tools to research, decide, and build our own systems by hand. This can also be buildable as we grow the podcast, and we can turn it into our own all-in-one website for our insights, like Salesforce. The Slack standup builds agency by creating easier, daily accountability that never lets momentum die and because it has almost no setup cost, it's the one we should get running first, and it removes MUCH of the friction that you might mention would be included with these agents. ",
 			"autoResize": true,
 			"lineHeight": 1.25,
-			"hasTextLink": false
+			"hasTextLink": false,
+			"link": null
 		},
 		{
 			"id": "-3vkrD7cJWgzmaPPWwAUL",
@@ -507,7 +512,8 @@
 			"originalText": "Why this matters: building high agency",
 			"autoResize": true,
 			"lineHeight": 1.15,
-			"hasTextLink": false
+			"hasTextLink": false,
+			"link": null
 		}
 	],
 	"appState": {
@@ -528,10 +534,10 @@
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
 		"currentItemFrameRole": null,
-		"scrollX": 8.566888166752449,
-		"scrollY": -27.376245610805313,
+		"scrollX": 2.428603173495837,
+		"scrollY": -77.85039643618252,
 		"zoom": {
-			"value": 0.509775
+			"value": 0.89998
 		},
 		"currentItemRoundness": "round",
 		"gridSize": 20,
