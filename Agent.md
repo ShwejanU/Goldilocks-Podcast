@@ -2,7 +2,7 @@
 Should have task system
 Should tell us what is needed for us to do based on specific goals and timeline
 
-I am a part of three different team members working on making this podcast. All we have right now is the logo, a slack channel, and an understanding of why we want to do this. I want to get started and make sure we know what tasks should be done, what goals we should achieve this week (such as how many people we should reach out to, etc), understand what is needed based off of goals and timelines. I want it to sync to Obsidian notes. So like my teammate really loves Obsidian, and we brainstorm and write all that we need to figure out our outreach podcast, what equipment we need,  our goals, etc. I want the agent to have a continuous update to this Obsidian (which we also upload to github) and it should give us tasks, goals, etc based off of this. You should come up with those goals tasks and whatever else you need for us, like specific tasks for each of us to do. The team members are Nikki, Shwejan, and Malhar. We all are able to do anything needed for podcast, no specific skill set other than I (nikki) want to focus on editing podcasts as in I can learn the skill and whatever tools needed. Theres so many thigns we have to do, like buy podcast virtual mic, reach out to people, draft outreach messages, and MANY mroe tasks that I cannot think of that YOU need to think of so we can get started and push this podcast out. 
+
 
 
 That's the exact right instinct to slow down on — "should have a task system" is a wish, not a spec, and the gap between those two is where all the ambiguity lives. Here's a simple way to close that gap for anything you write down.
