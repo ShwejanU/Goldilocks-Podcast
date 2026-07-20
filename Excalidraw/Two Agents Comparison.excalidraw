@@ -255,7 +255,7 @@
 		{
 			"id": "rightbodyrect",
 			"type": "rectangle",
-			"x": 679.7996719151884,
+			"x": 679.903853813772,
 			"y": 200.20763819349645,
 			"width": 568.6987182665713,
 			"height": 344.39420483550145,
@@ -273,11 +273,11 @@
 				"type": 3
 			},
 			"seed": 108,
-			"version": 95,
-			"versionNonce": 201262888,
+			"version": 96,
+			"versionNonce": 1468140840,
 			"isDeleted": false,
 			"boundElements": [],
-			"updated": 1784522451483,
+			"updated": 1784522566389,
 			"link": null,
 			"locked": false,
 			"index": "a7",
@@ -483,10 +483,10 @@
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
 		"currentItemFrameRole": null,
-		"scrollX": -352.36409427299145,
-		"scrollY": 87.10256851849176,
+		"scrollX": -420.52761491372723,
+		"scrollY": -133.09074968735052,
 		"zoom": {
-			"value": 0.588634
+			"value": 1.150613
 		},
 		"currentItemRoundness": "round",
 		"gridSize": 20,
