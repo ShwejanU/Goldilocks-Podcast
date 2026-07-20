@@ -39,12 +39,13 @@ Location(s)
 
 Interests:
 - math 
-- Football
+- Sports 
+	- Football (american)
 
 Profession(s)
 - founder
 - Employee
 
 
-- College 
+College 
 
