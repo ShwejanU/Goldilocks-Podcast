@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goldilocks Podcast — Production HQ</title>
+<style>
+  :root{
+    --red:#B01722; --red-deep:#7C0D15; --gold:#D4AF37; --gold-soft:#E8C86B;
+    --cream:#FBF3E4; --ink:#2A1B16; --muted:#7d6a5f; --card:#fffaf0;
+    --green:#2f7d4f; --amber:#c47f10;
+    --shadow:0 6px 22px rgba(124,13,21,.12);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(160deg,#fbf3e4,#f5e6cf);color:var(--ink);line-height:1.5}
+  header{background:linear-gradient(135deg,var(--red-deep),var(--red));color:var(--cream);
+    padding:22px 30px;box-shadow:var(--shadow);border-bottom:4px solid var(--gold);position:sticky;top:0;z-index:20}
+  .brand{display:flex;align-items:center;gap:16px;max-width:1120px;margin:0 auto}
+  .logo{width:52px;height:52px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--gold-soft),var(--gold));
+    display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid var(--cream);flex:0 0 auto}
+  header h1{margin:0;font-size:23px;letter-spacing:.5px}
+  header p{margin:3px 0 0;color:var(--gold-soft);font-size:13px}
+  .wrap{max-width:1120px;margin:0 auto;padding:20px}
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px;position:sticky;top:96px;z-index:15;background:rgba(251,243,228,.85);backdrop-filter:blur(4px);padding:6px 0;border-radius:10px}
+  nav button{background:var(--card);border:1.5px solid #e6d3a8;color:var(--ink);padding:9px 15px;border-radius:999px;
+    cursor:pointer;font-size:14px;font-weight:600;transition:.15s}
+  nav button:hover{border-color:var(--gold)}
+  nav button.active{background:var(--red);color:var(--cream);border-color:var(--red)}
+  section{display:none;animation:fade .25s}
+  section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  h2{color:var(--red-deep);border-bottom:2px solid var(--gold);padding-bottom:6px;margin-top:8px}
+  h3{color:var(--red);margin:20px 0 8px}
+  h4{color:var(--red-deep);margin:14px 0 4px}
+  .card{background:var(--card);border:1px solid #eaddc0;border-radius:14px;padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+  .kpi{display:flex;gap:12px;flex-wrap:wrap}
+  .kpi .box{flex:1;min-width:130px;background:var(--card);border:1px solid #eaddc0;border-radius:12px;padding:12px;text-align:center;box-shadow:var(--shadow)}
+  .kpi .box b{display:block;font-size:28px;color:var(--red-deep)}
+  .kpi .box span{font-size:12px;color:var(--muted)}
+  .badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;color:#fff}
+  .Nikki{background:#B01722}.Shwejan{background:#2f6f8f}.Malhar{background:#6a4c93}.Unassigned{background:#b0a294}.All{background:#7d6a5f}
+  select.owner{border:1.5px solid #e6d3a8;border-radius:8px;padding:4px 8px;font-weight:700;font-size:12px;background:#fff;cursor:pointer}
+  .status{font-size:12px;font-weight:700;padding:2px 9px;border-radius:6px}
+  .s-todo{background:#f3e3c6;color:#8a6a10}.s-done{background:#d5efdd;color:var(--green)}
+  .task{background:var(--card);border:1px solid #eaddc0;border-radius:12px;margin:9px 0;box-shadow:var(--shadow);overflow:hidden}
+  .task .head{display:flex;align-items:center;gap:11px;padding:11px 14px;cursor:pointer}
+  .task .head:hover{background:#fff6df}
+  .task input.chk{width:18px;height:18px;accent-color:var(--red);flex:0 0 auto}
+  .task .label{flex:1;font-weight:600}
+  .task.done .label{text-decoration:line-through;color:var(--muted)}
+  .task .caret{color:var(--gold);font-size:13px;transition:.2s}
+  .task.open .caret{transform:rotate(90deg)}
+  .task .detail{display:none;padding:2px 16px 16px 46px;border-top:1px dashed #ecdcbd;font-size:14px}
+  .task.open .detail{display:block;animation:fade .2s}
+  .task .detail ul{margin:6px 0;padding-left:18px}
+  .task .detail a{color:var(--red);font-weight:600}
+  .pill{font-size:11px;font-weight:700;color:var(--red-deep);background:#fbeccb;border:1px solid var(--gold);padding:1px 8px;border-radius:999px;margin-left:6px}
+  .rec{background:#fff7e0;border-left:4px solid var(--gold);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .filters button{background:var(--card);border:1.5px solid #e6d3a8;padding:6px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:13px}
+  .filters button.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .goal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .goal-row input[type=date]{border:1.5px solid var(--gold);border-radius:8px;padding:5px 8px;font-weight:700;color:var(--red-deep);background:#fffdf6}
+  .bar{height:11px;background:#eee2c8;border-radius:8px;overflow:hidden;margin-top:8px}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--red))}
+  textarea.edit,input.edit{width:100%;border:1.5px dashed var(--gold);border-radius:8px;padding:9px 11px;background:#fffdf6;font:inherit;color:var(--ink);resize:vertical}
+  .note{font-size:13px;color:var(--muted)}
+  .log-entry{border-left:3px solid var(--red);padding:4px 0 4px 14px;margin:10px 0}
+  .log-entry time{font-weight:700;color:var(--red-deep);font-size:13px}
+  ul.clean{list-style:none;padding-left:0}
+  ul.clean li{padding:7px 0;border-bottom:1px dashed #ecdcbd}
+  .q{background:#fff7e0;border-radius:8px;padding:10px 14px;margin:8px 0;border-left:4px solid var(--amber)}
+  .contrib{display:flex;flex-direction:column;gap:8px}
+  .contrib .row{display:flex;align-items:center;gap:10px}
+  .contrib .name{width:80px;font-weight:700}
+  .contrib .track{flex:1;height:18px;background:#eee2c8;border-radius:9px;overflow:hidden}
+  .contrib .track > i{display:block;height:100%;border-radius:9px}
+  .btn{background:var(--red);color:var(--cream);border:none;border-radius:8px;padding:7px 14px;font-weight:700;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:24px}
+  .method{background:var(--card);border:1px solid #eaddc0;border-radius:12px;padding:14px 16px;margin:10px 0;box-shadow:var(--shadow)}
+  .tag{display:inline-block;background:#f7ead0;border:1px solid var(--gold);color:var(--red-deep);font-size:11px;font-weight:700;padding:1px 8px;border-radius:6px;margin:2px 4px 2px 0}
+  code{background:#f3e6ca;padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="logo">🎙️</div>
+    <div>
+      <h1>Goldilocks Podcast — Production HQ</h1>
+      <p>Live source of truth · Nikki · Shwejan · Malhar · everything below is editable & saves on your device</p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav id="nav">
+    <button class="active" data-tab="dash">📊 Dashboard</button>
+    <button data-tab="goals">🎯 Goals</button>
+    <button data-tab="tasks">✅ Tasks</button>
+    <button data-tab="outreach">📇 Outreach</button>
+    <button data-tab="marketing">📣 Marketing</button>
+    <button data-tab="log">📝 Log</button>
+    <button data-tab="dec">⚖️ Decisions</button>
+    <button data-tab="open">❓ Questions</button>
+  </nav>
+
+  <!-- DASHBOARD -->
+  <section id="dash" class="active">
+    <h2>Today at a glance</h2>
+    <div class="kpi">
+      <div class="box"><b id="k-pct">0%</b><span>Overall complete</span></div>
+      <div class="box"><b id="k-done">0</b><span>Tasks done</span></div>
+      <div class="box"><b id="k-total">0</b><span>Total tasks</span></div>
+      <div class="box"><b id="k-week">0</b><span>Done this week</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🔥 The 3 things we all focus on today</h3>
+      <p class="note">Auto-picked from what's most urgent. Anyone can claim any of these — use the dropdown. Click a task to see exactly what to do.</p>
+      <div id="focus"></div>
+    </div>
+
+    <div class="card">
+      <h3>📇 Everyone's daily outreach rep</h3>
+      <p class="note">Non-negotiable: each of us does at least one outreach action per day. Your specific move for today lives on the <a href="#" onclick="go('outreach');return false;">Outreach page</a>.</p>
+      <div id="dailyOutreach"></div>
+    </div>
+
+    <div class="card">
+      <h3>📈 How we're each contributing — this week</h3>
+      <p class="note">Tasks completed in the last 7 days, per person. This resets weekly so it shows recent effort, not all-time.</p>
+      <div class="contrib" id="contrib"></div>
+      <p class="note" style="margin-top:10px">All-time completed: <span id="alltime"></span></p>
+    </div>
+
+    <div class="card">
+      <h3>💡 Team idea inbox (Obsidian → agent)</h3>
+      <p class="note">Create a note in Obsidian called <code>Agent Inbox.md</code>. Anyone can drop an idea, request, or update there at any time — new guest names, gear thoughts, "I finished X", format ideas, anything. The daily agent reads that note every morning and folds new input into this plan. You can also jot quick thoughts here for yourself:</p>
+      <textarea class="edit" data-save="ideaScratch" rows="3" placeholder="Quick scratch ideas (saved on this device only)…"></textarea>
+    </div>
+  </section>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <h2>Goals — edit any date</h2>
+    <p class="note">Anchored to today: <b>Sun 19 Jul 2026</b>. Change any date to match your real availability — the progress bars and the daily agent measure pace against whatever you set. Click <b>Reset dates</b> to restore defaults.</p>
+    <div id="goalroot"></div>
+    <button class="btn ghost" onclick="resetGoals()">↺ Reset dates</button>
+  </section>
+
+  <!-- TASKS -->
+  <section id="tasks">
+    <h2>Task list</h2>
+    <p class="note">Click any task to expand exactly what to do, resources, and my recommendation. Assign yourselves with the dropdown — you decide who does what; I just give you the work. Check the box when done (counts toward your weekly contribution).</p>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="Nikki">Nikki</button>
+      <button data-f="Shwejan">Shwejan</button>
+      <button data-f="Malhar">Malhar</button>
+      <button data-f="Unassigned">Unassigned</button>
+    </div>
+    <div id="taskroot"></div>
+  </section>
+
+  <!-- OUTREACH -->
+  <section id="outreach">
+    <h2>📇 Outreach — everything you need to land guests</h2>
+    <p class="note">This is the engine of the show. Your vault strategy is right: start with the closest network nodes to practice, then use warm 2nd-degree intros to reach notable people. Below is the full playbook, then your outreach tasks.</p>
+
+    <div class="card">
+      <h3>The strategy in one line</h3>
+      <p>Don't cold-DM famous people first (low reply rate). Interview the most reachable, interesting person in your <b>first layer</b>, do a great job, then ask every guest for <b>2 intros</b>. World-class people cluster together — so a warm intro from guest #6 can reach someone you could never cold-email. This is how the network compounds.</p>
+    </div>
+
+    <h3>Step 1 — Build the guest pipeline (a living list)</h3>
+    <div class="method">
+      <p>Make a simple tracker (Google Sheet or an Obsidian note) with columns: <b>Name · How we know them · Why interesting · Best contact channel · Status · Last touch date · Who owns them</b>. Statuses: <span class="tag">Idea</span><span class="tag">Researching contact</span><span class="tag">Message sent</span><span class="tag">Replied</span><span class="tag">Scheduled</span><span class="tag">Recorded</span><span class="tag">Declined</span>. Seed it with 15 names this week — mix of easy first-layer people and 2–3 "dream" targets to work toward via intros.</p>
+    </div>
+
+    <h3>Step 2 — Find anyone's contact info</h3>
+    <div class="method">
+      <h4>Email (highest reply rate for notable people)</h4>
+      <ul>
+        <li><b>Guess the pattern:</b> most orgs use <code>first@</code>, <code>first.last@</code>, or <code>flast@</code> the company domain. From your vault: check old-company domains and university naming patterns.</li>
+        <li><b>Verify before sending:</b> use a free email verifier (Hunter.io free tier, or paste the guessed address into Gmail "compose" and hover — a Google profile photo often confirms it's real). Tools: <b>Hunter.io</b> (free 25/mo), <b>Clearbit Connect</b>, <b>Apollo.io</b> free tier.</li>
+        <li><b>Academics:</b> emails are usually public on their university department page or the last page of their papers (PDF). Find high-H-index researchers on Google Scholar, then their co-authors (your vault idea).</li>
+      </ul>
+      <h4>Social DMs (best for first-layer + creators)</h4>
+      <ul>
+        <li>Instagram, X/Twitter, TikTok, LinkedIn, Facebook. LinkedIn is strongest for professionals; X is strongest for tech/founders; IG/TikTok for creators.</li>
+        <li>Keep DMs short, specific, and human — see the template below.</li>
+      </ul>
+      <h4>Warm intros (the multiplier)</h4>
+      <ul>
+        <li>For any "dream" guest, list who you know that might know them (spouse, best friend, former colleague, per your vault). Ask that person for a forwardable intro — a 2-line blurb they can paste.</li>
+      </ul>
+    </div>
+
+    <h3>Step 3 — The messages (steal these)</h3>
+    <div class="method">
+      <h4>Cold email / DM template</h4>
+      <p class="rec">Subject: <b>Your story on Goldilocks</b><br>
+      Hi [Name] — I'm one of three people behind <i>Goldilocks</i>, a podcast about people's life stories. We're less interested in résumés and more in the actual path — the turns, the bets, the almost-didn't moments. [One specific, genuine sentence about why <b>them</b> — a detail that proves you did homework.] Would you be open to a relaxed 45–60 min conversation, recorded remotely? Totally flexible on timing. — [Your name]</p>
+      <h4>Warm-intro request (to your mutual friend)</h4>
+      <p class="rec">"Hey [friend] — we're starting a life-story podcast and I'd love to interview [target]. Would you be up for a quick intro? Here's a blurb you can forward: [paste 2-sentence blurb]. No worries if not!"</p>
+      <h4>Follow-up (send once, 4–5 days later)</h4>
+      <p class="rec">"Hi [Name], floating this back up in case it slipped by — totally understand if the timing's off. Happy to work around your schedule."</p>
+    </div>
+
+    <h3>Step 4 — Where to find great guests (source lists)</h3>
+    <div class="method">
+      <p>From your vault + expansions: <span class="tag">Your own 1st/2nd-degree network</span><span class="tag">YC founders & YC Paper Club</span><span class="tag">NeurIPS / academic conferences</span><span class="tag">Royal Society fellows</span><span class="tag">High-H-index researchers + co-authors</span><span class="tag">Open-source maintainers (PyTorch etc.)</span><span class="tag">Local university dept pages</span><span class="tag">Interesting people you already follow</span><span class="tag">Nobel & Turing laureates (long-game via intros)</span></p>
+      <p class="note">Rule of thumb: for every dream target, add 2 reachable people adjacent to them. That's your realistic pipeline.</p>
+    </div>
+
+    <h3>Your outreach tasks</h3>
+    <div class="filters" id="ofilters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="Nikki">Nikki</button><button data-f="Shwejan">Shwejan</button><button data-f="Malhar">Malhar</button><button data-f="Unassigned">Unassigned</button>
+    </div>
+    <div id="outreachroot"></div>
+  </section>
+
+  <!-- MARKETING -->
+  <section id="marketing">
+    <h2>📣 Marketing — build the audience</h2>
+    <p class="note">You don't need a big audience to start (founder philosophy: bet on intent, not traction) — but marketing is how episodes find listeners and how guests see you're legit. Build the machine in parallel with recording.</p>
+
+    <div class="card">
+      <h3>The core idea: clips-first, show-second</h3>
+      <p>Almost nobody discovers a podcast by browsing Spotify. They find a <b>60-second clip</b> on TikTok / Reels / Shorts / X, then go subscribe. So the real marketing product is <b>short vertical clips</b> from each episode. Nikki's editing lane feeds this directly — one interview = one full episode + 3–5 clips.</p>
+    </div>
+
+    <h3>Channel setup (do once)</h3>
+    <div class="method">
+      <ul>
+        <li><b>Handle:</b> lock the same @goldilocks-style handle on Instagram, TikTok, YouTube, and X so you're consistent. Check availability on all before committing.</li>
+        <li><b>Profiles:</b> logo as avatar, one-line description ("Life-story interviews — famous and unknown"), link to the Spotify/Apple show.</li>
+        <li><b>YouTube:</b> create a channel even if audio-only — upload episodes as audio-with-cover-art or full video; it's the #2 podcast discovery engine after Spotify.</li>
+        <li><b>Link-in-bio:</b> free Linktree/Beacons pointing to all listen links + "be a guest" form.</li>
+      </ul>
+    </div>
+
+    <h3>Content engine (repeatable per episode)</h3>
+    <div class="method">
+      <p>For every episode published, produce: </p>
+      <ul>
+        <li>🎬 <b>3–5 vertical clips</b> (30–60s) of the best moments — captioned (auto-captions in Descript/CapCut), hook in first 2 seconds.</li>
+        <li>🖼️ <b>1 audiogram</b> (waveform + quote) for feeds that aren't video-heavy.</li>
+        <li>✍️ <b>1 quote graphic</b> in Canva using brand red/gold.</li>
+        <li>📝 <b>Show notes</b> + 3–5 pull quotes for the episode description and a caption bank.</li>
+        <li>📌 Post the clips across TikTok / Reels / Shorts / X over the week following release (don't dump all at once).</li>
+      </ul>
+      <p class="rec"><b>Tools:</b> Descript or CapCut (free) for clips + captions; Canva (free) for graphics/audiograms; Buffer or Later (free tier) to schedule posts across platforms at once.</p>
+    </div>
+
+    <h3>Growth tactics that actually work early</h3>
+    <div class="method">
+      <ul>
+        <li><b>Guest amplification:</b> send each guest 2–3 ready-to-post clips + captions. Their share to their audience is your #1 growth lever — make it zero-effort for them.</li>
+        <li><b>Post consistently, not perfectly:</b> 3–5 clips/week beats 1 polished video/month.</li>
+        <li><b>Engage before you broadcast:</b> comment genuinely on the accounts of people in your niche; borrowed reach.</li>
+        <li><b>Cross-post to communities</b> where the guest's world lives (relevant subreddits, Discords, group chats) — only where it's welcome and relevant.</li>
+        <li><b>Email/DM list:</b> collect emails from day one (free tier of any provider); a small owned list beats rented algorithm reach.</li>
+      </ul>
+    </div>
+
+    <h3>Your marketing tasks</h3>
+    <div class="filters" id="mfilters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="Nikki">Nikki</button><button data-f="Shwejan">Shwejan</button><button data-f="Malhar">Malhar</button><button data-f="Unassigned">Unassigned</button>
+    </div>
+    <div id="marketingroot"></div>
+  </section>
+
+  <!-- LOG -->
+  <section id="log">
+    <h2>Progress log</h2>
+    <p class="note">The daily agent appends a dated entry each weekday. Add your own wins too — they save on this device.</p>
+    <textarea class="edit" data-save="userLog" rows="4" placeholder="Add a dated note, e.g. '22 Jul — Malhar bought the mics'…"></textarea>
+    <div class="card">
+      <div class="log-entry"><time>19 Jul 2026</time> — Production HQ v2 built. Editable goals, self-assign tasks with expandable how-to + recommendations, weekly contribution tracker, full Outreach and Marketing playbooks with tasks. Baseline: 0% shipped, 0 episodes recorded.</div>
+    </div>
+  </section>
+
+  <!-- DECISIONS -->
+  <section id="dec">
+    <h2>Decisions made</h2>
+    <p class="note">Settled things — stop re-litigating. Add your own below.</p>
+    <ul class="clean">
+      <li>✔️ <b>Format:</b> long-form life-story interviews; guests can be unknown (bet on intent, not traction).</li>
+      <li>✔️ <b>Outreach order:</b> closest network nodes first → warm 2nd-degree intros to notable people.</li>
+      <li>✔️ <b>Nikki owns editing</b> (learns Descript + free tools) and feeds the clips engine.</li>
+      <li>✔️ <b>Ship-fast:</b> cheapest working version of everything for episode 1; upgrade only what hurts.</li>
+      <li>✔️ <b>Clips-first marketing:</b> short vertical clips are the primary discovery product.</li>
+    </ul>
+    <textarea class="edit" data-save="userDecisions" rows="3" placeholder="Add new settled decisions here…"></textarea>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section id="open">
+    <h2>Open questions</h2>
+    <p class="note">Type your answers directly — they save on this device and the agent keeps surfacing unanswered ones.</p>
+    <div class="q"><b>Q1 · Show name</b> — "Goldilocks" or a fuller title? Blocks cover art, hosting, RSS. <textarea class="edit" data-save="q1" rows="1" placeholder="Answer…"></textarea></div>
+    <div class="q"><b>Q2 · Audio-only or video?</b> Drives Zencastr-free vs Riverside-paid and editing load. <textarea class="edit" data-save="q2" rows="1" placeholder="Answer…"></textarea></div>
+    <div class="q"><b>Q3 · Publishing cadence?</b> Weekly / biweekly / seasonal. <textarea class="edit" data-save="q3" rows="1" placeholder="Answer…"></textarea></div>
+    <div class="q"><b>Q4 · Who is guest #1?</b> Pick one real, friendly first-layer person now. <textarea class="edit" data-save="q4" rows="1" placeholder="Answer…"></textarea></div>
+    <div class="q"><b>Q5 · Monthly budget ceiling?</b> Recommendations assume near-zero to start. <textarea class="edit" data-save="q5" rows="1" placeholder="Answer…"></textarea></div>
+  </section>
+</div>
+
+<footer>Goldilocks Production HQ v2 · built 19 Jul 2026 · edit freely, commit PRODUCTION.html to the repo, and the daily agent builds on it.</footer>
+
+<script>
+/* ---------- DATA ---------- */
+const GOALS = [
+  ["g1","First test episode recorded","A throwaway practice interview with a friendly first-layer person — proves the whole chain works.","2026-08-08"],
+  ["g2","Brand basics locked","Show name, one-sentence description, cover art, hosting account created.","2026-08-15"],
+  ["g3","Episode 1 published","First real, listed episode live on Spotify/Apple via RSS.","2026-08-22"],
+  ["g4","Guest pipeline: 15 warm leads","Named people, contact channel found, first message sent to at least 8.","2026-08-29"],
+  ["g5","5 episodes published","A real back catalogue and a repeatable cadence.","2026-10-03"],
+  ["g6","Weekly cadence sustained 1 month","Proof the system runs without heroics.","2026-10-31"]
+];
+
+// each task: [id, title, detailHTML, priority(for focus), isOutreachDaily]
+const CORE = {
+"🎛️ Equipment":[
+ ["e1","Decide & buy microphones","<b>What to do:</b> buy dynamic USB mics — one per host.<div class='rec'>✅ <b>Rec:</b> Samson Q2U ×3 (~$60–70 each). Best <i>deal</i>, USB+XLR so you can upgrade later, forgives untreated rooms. Alternatives: Rode PodMic USB (~$100–200, better sound), Shure MV7+ ($329, premium — buy later).</div><ul><li>Order this week so a test record can happen.</li><li>Grab cheap pop filters/stands if not bundled.</li></ul>",1,0],
+ ["e2","Everyone tests mic + quiet space","<b>What to do:</b> each person records 30s in their space, listens on headphones for hum/echo. Move away from HVAC, add soft furnishings if echoey.",0,0]
+],
+"💻 Recording":[
+ ["r1","Set up recording platform","<b>What to do:</b> create the remote-recording account (shared login).<div class='rec'>✅ <b>Rec:</b> start on <b>Zencastr Free</b> (2 guests, 8 hrs/mo, separate local tracks = clean edits, $0). Move to <b>Riverside Pro ($24/mo)</b> only if you commit to video/YouTube.</div>",1,0],
+ ["r2","Do a 10-min throwaway test record","<b>What to do:</b> all three hop on, record 10 min, export, hand tracks to Nikki to practice editing. Goal is learning the flow, not quality.",1,0]
+],
+"🎨 Format & Brand":[
+ ["b1","Decide final show name","<b>What to do:</b> settle the name (Open Question Q1). Everything downstream waits on this. Check handle availability on IG/TikTok/YouTube/X before locking.",1,0],
+ ["b2","Write one-sentence description","<b>What to do:</b> fill the vault's Overview template — '<i>A podcast about [life stories] for [the curious] that helps them [find a path that resonates].</i>' Keep it under 20 words.",0,0],
+ ["b3","Create 3000×3000 cover art","<b>What to do:</b> in Canva (free), build a square around your existing logo, brand red/gold. Don't overthink v1 — it's changeable.<div class='rec'>Nikki-adjacent (visual/edit skills).</div>",0,0],
+ ["b4","Define standard episode structure","<b>What to do:</b> agree an arc — short intro → life-stage chronological questions (per your Interview Protocol note) → closing reflection → ask-for-intros outro.",0,0]
+],
+"📡 Distribution & Admin":[
+ ["d1","Create hosting account + RSS","<b>What to do:</b> create the podcast host, get your RSS feed, submit to Apple Podcasts + Spotify.<div class='rec'>✅ <b>Rec:</b> Spotify for Creators (free, unlimited). Upgrade to Buzzsprout ($12/mo) if you want better analytics / permanent catalogue.</div>",0,0],
+ ["d2","Shared password store for all logins","<b>What to do:</b> put every account login in a shared vault (Bitwarden free) so all three have access.",0,0],
+ ["d3","Adopt a one-page guest release form","<b>What to do:</b> create a simple consent/release granting rights to record, edit, distribute. <b>Get it signed before every recording — no exceptions.</b> A free template in a shared Google Doc is fine to start.",1,0]
+],
+"🧠 Prep System":[
+ ["p1","Build guest-research template","<b>What to do:</b> a reusable note grouping questions by life stage (per Interview Protocol). Fill it before each guest so you know their story cold and can let convo flow.",0,0],
+ ["p2","Write a life-stage question bank","<b>What to do:</b> 5–8 default questions per life stage (childhood, turning points, current bets, lessons) you can pull from for any guest.",0,0],
+ ["p3","Create a pre-record checklist","<b>What to do:</b> levels checked, backup local recording on, release signed, research note open, water nearby. Nikki owns this (production quality).",0,0]
+],
+"🎚️ Editing (Nikki's lane)":[
+ ["ed1","Install editor + learn it","<b>What to do:</b> install Descript (free) as primary + GarageBand/Audacity as fallback.<div class='rec'>✅ <b>Rec:</b> Descript — text-based editing is the fastest beginner path and doubles as your clip generator.</div>",1,0],
+ ["ed2","Edit a 5-min practice clip","<b>What to do:</b> take the test-record audio, remove filler/dead air, add a simple intro. Just build muscle memory.",0,0],
+ ["ed3","Define the editing workflow","<b>What to do:</b> write the repeatable steps: import tracks → level → cut → captions → export → clips. This becomes the SOP for every episode.",0,0],
+ ["ed4","Create episode publishing checklist","<b>What to do:</b> edit → cover → show notes → upload to host → schedule → cut clips → hand clips to marketing.",0,0]
+]
+};
+
+const OUTREACH = [
+ ["o1","Build the 15-name guest pipeline tracker","<b>What to do:</b> create the tracker (columns above) and seed 15 names — mostly reachable first-layer people + 2–3 dream targets. This is the single most important outreach task.",1,1],
+ ["o2","Draft the reusable outreach templates","<b>What to do:</b> copy the cold, warm-intro, and follow-up templates above into a shared doc; tweak the voice to sound like you.",0,1],
+ ["o3","Pick guest #1","<b>What to do:</b> choose ONE friendly, reachable first-layer person (Open Question Q4). The test episode needs a name, not a category.",1,1],
+ ["o4","Find contact info for your first 5 targets","<b>What to do:</b> use the email-guessing + verifier + social methods above. Log the best channel for each in the tracker.",0,1],
+ ["o5","Send first messages to 8 leads","<b>What to do:</b> personalize the template (one genuine specific line each) and send. Log the date in the tracker.",1,1],
+ ["o6","Daily rep: one outreach action","<b>What to do:</b> every day, each person does ONE of: add a name, find a contact, send a message, send a follow-up, or ask a guest for 2 intros. Log it.",1,1],
+ ["o7","Ask every guest for 2 intros","<b>What to do:</b> at the end of each recording, ask for two people they'd recommend + a forwardable intro. This is how the network compounds.",0,1]
+];
+
+const MARKETING = [
+ ["m1","Lock handles on all platforms","<b>What to do:</b> claim the same @handle on Instagram, TikTok, YouTube, X. Check all before committing to one.",1,0],
+ ["m2","Set up profiles + link-in-bio","<b>What to do:</b> logo avatar, one-line bio, Linktree/Beacons (free) pointing to listen links + a 'be a guest' form.",0,0],
+ ["m3","Create the YouTube channel","<b>What to do:</b> set up the channel even if audio-only (upload as audio+cover). #2 discovery engine after Spotify.",0,0],
+ ["m4","Build the per-episode clip workflow","<b>What to do:</b> define how each episode becomes 3–5 captioned vertical clips + 1 audiogram + 1 quote graphic. Nikki-adjacent; use Descript/CapCut + Canva (free).",1,0],
+ ["m5","Write the caption + hashtag bank","<b>What to do:</b> reusable caption formats and a set of relevant hashtags per platform so posting is fast.",0,0],
+ ["m6","Set up a free scheduler","<b>What to do:</b> Buffer or Later (free tier) to schedule clips across TikTok/Reels/Shorts/X in one place.",0,0],
+ ["m7","Guest amplification kit","<b>What to do:</b> a template pack (2–3 clips + captions) you send each guest so they can share to their audience in one tap. Biggest early growth lever.",1,0],
+ ["m8","Start collecting emails day one","<b>What to do:</b> free email provider + a simple signup link in bio; a small owned list beats rented reach.",0,0]
+];
+
+/* ---------- STATE ---------- */
+const S = JSON.parse(localStorage.getItem('gl2')||'{}');
+S.tasks = S.tasks||{};      // id -> {done, owner, doneAt}
+S.goals = S.goals||{};      // id -> date
+S.fields = S.fields||{};    // data-save -> value
+function save(){localStorage.setItem('gl2',JSON.stringify(S));}
+
+const OWNERS=["Unassigned","Nikki","Shwejan","Malhar"];
+const ALLTASKS=[]; // flat list of {id,title,detail}
+function collect(obj){ if(Array.isArray(obj)){obj.forEach(t=>ALLTASKS.push({id:t[0],title:t[1],detail:t[2]}));}
+  else {for(const k in obj) obj[k].forEach(t=>ALLTASKS.push({id:t[0],title:t[1],detail:t[2]}));} }
+collect(CORE);collect(OUTREACH);collect(MARKETING);
+
+/* ---------- RENDER TASKS ---------- */
+function taskHTML(t){
+  const st=S.tasks[t.id]||{}; const done=st.done; const owner=st.owner||"Unassigned";
+  const opts=OWNERS.map(o=>`<option ${owner===o?'selected':''}>${o}</option>`).join('');
+  return `<div class="task ${done?'done':''}" data-id="${t.id}" data-owner="${owner}">
+    <div class="head">
+      <input type="checkbox" class="chk" ${done?'checked':''}>
+      <span class="label">${t.title}</span>
+      <select class="owner ${owner}" onclick="event.stopPropagation()">${opts}</select>
+      <span class="status ${done?'s-done':'s-todo'}">${done?'done':'to do'}</span>
+      <span class="caret">▶</span>
+    </div>
+    <div class="detail">${t.detail}</div>
+  </div>`;
+}
+function renderGroup(root,obj){
+  root.innerHTML='';
+  if(Array.isArray(obj)){ obj.forEach(t=>root.insertAdjacentHTML('beforeend',taskHTML({id:t[0],title:t[1],detail:t[2]}))); }
+  else { for(const cat in obj){ const h=document.createElement('h3');h.textContent=cat;root.appendChild(h);
+    obj[cat].forEach(t=>root.insertAdjacentHTML('beforeend',taskHTML({id:t[0],title:t[1],detail:t[2]}))); } }
+}
+renderGroup(document.getElementById('taskroot'),CORE);
+renderGroup(document.getElementById('outreachroot'),OUTREACH);
+renderGroup(document.getElementById('marketingroot'),MARKETING);
+
+/* delegate: expand, check, assign */
+document.body.addEventListener('click',e=>{
+  const head=e.target.closest('.task .head');
+  if(head && e.target.type!=='checkbox' && e.target.tagName!=='SELECT'){ head.parentElement.classList.toggle('open'); }
+});
+document.body.addEventListener('change',e=>{
+  const task=e.target.closest('.task'); if(!task)return; const id=task.dataset.id;
+  S.tasks[id]=S.tasks[id]||{};
+  if(e.target.classList.contains('chk')){
+    const on=e.target.checked; S.tasks[id].done=on; S.tasks[id].doneAt=on?Date.now():null;
+    if(on && (!S.tasks[id].owner)) {} // leave unassigned allowed
+  }
+  if(e.target.classList.contains('owner')){ S.tasks[id].owner=e.target.value; }
+  save(); rerenderAll();
+});
+
+/* ---------- GOALS ---------- */
+function goalDate(g){ return S.goals[g[0]]||g[3]; }
+function renderGoals(){
+  const root=document.getElementById('goalroot'); root.innerHTML='';
+  GOALS.forEach(g=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML=`<div class="goal-row"><div><b>${g[1]}</b><div class="note">${g[2]}</div></div>
+      <label class="note">Target: <input type="date" value="${goalDate(g)}" data-goal="${g[0]}"></label></div>
+      <div class="bar"><i style="width:${goalPct(g[0])}%"></i></div>`;
+    root.appendChild(c);
+  });
+}
+function goalPct(id){ // rough: tie some goals to task completion
+  const map={g1:['e1','r1','r2','o3'],g2:['b1','b2','b3','d1'],g3:['ed1','ed2','d1','d3'],
+    g4:['o1','o4','o5'],g5:['ed3','ed4','m4'],g6:['m4','m7']};
+  const ids=map[id]||[]; if(!ids.length)return 0;
+  const d=ids.filter(i=>S.tasks[i]&&S.tasks[i].done).length; return Math.round(d/ids.length*100);
+}
+document.getElementById('goalroot').addEventListener('change',e=>{
+  if(e.target.dataset.goal){ S.goals[e.target.dataset.goal]=e.target.value; save(); }
+});
+function resetGoals(){ S.goals={}; save(); renderGoals(); }
+
+/* ---------- DASHBOARD ---------- */
+function rerenderAll(){ renderKPI(); renderFocus(); renderDaily(); renderContrib(); renderGoals(); syncFilters(); }
+function renderKPI(){
+  const all=ALLTASKS.length; const done=ALLTASKS.filter(t=>S.tasks[t.id]&&S.tasks[t.id].done).length;
+  const week=ALLTASKS.filter(t=>{const s=S.tasks[t.id];return s&&s.done&&s.doneAt&&(Date.now()-s.doneAt<6048e5);}).length;
+  document.getElementById('k-total').textContent=all;
+  document.getElementById('k-done').textContent=done;
+  document.getElementById('k-pct').textContent=Math.round(done/all*100)+'%';
+  document.getElementById('k-week').textContent=week;
+}
+const FOCUS_POOL=['b1','r1','o1','ed1','e1','o5','r2','o3','d3','m1','m4','m7','b3'];
+function renderFocus(){
+  const root=document.getElementById('focus');
+  const pick=FOCUS_POOL.filter(id=>!(S.tasks[id]&&S.tasks[id].done)).slice(0,3);
+  if(!pick.length){root.innerHTML='<p class="note">🎉 All focus tasks done — nice. Pick anything from the Tasks/Outreach/Marketing pages.</p>';return;}
+  root.innerHTML=pick.map(id=>{const t=ALLTASKS.find(x=>x.id===id);return taskHTML(t);}).join('');
+}
+function renderDaily(){
+  const root=document.getElementById('dailyOutreach');
+  root.innerHTML=`<ul class="clean">
+    <li>Each person picks one from the <b>daily rep</b> list: add a name · find a contact · send a message · send a follow-up · ask a guest for 2 intros.</li>
+    <li>Do it, then log it in the guest tracker. Full method + templates on the Outreach page.</li></ul>`;
+}
+function renderContrib(){
+  const root=document.getElementById('contrib');
+  const people=["Nikki","Shwejan","Malhar"];
+  const week={},all={};
+  people.forEach(p=>{week[p]=0;all[p]=0;});
+  ALLTASKS.forEach(t=>{const s=S.tasks[t.id];if(s&&s.done&&s.owner&&people.includes(s.owner)){all[s.owner]++;if(s.doneAt&&Date.now()-s.doneAt<6048e5)week[s.owner]++;}});
+  const max=Math.max(1,...people.map(p=>week[p]));
+  const col={Nikki:'#B01722',Shwejan:'#2f6f8f',Malhar:'#6a4c93'};
+  root.innerHTML=people.map(p=>`<div class="row"><span class="name">${p}</span>
+    <span class="track"><i style="width:${week[p]/max*100}%;background:${col[p]}"></i></span>
+    <b style="width:24px;text-align:right">${week[p]}</b></div>`).join('');
+  document.getElementById('alltime').textContent=people.map(p=>`${p}: ${all[p]}`).join('  ·  ');
+}
+
+/* ---------- FILTERS ---------- */
+function bindFilter(barId){
+  const bar=document.getElementById(barId); if(!bar)return;
+  bar.addEventListener('click',e=>{ if(e.target.tagName!=='BUTTON')return;
+    bar.querySelectorAll('button').forEach(b=>b.classList.remove('on')); e.target.classList.add('on');
+    const f=e.target.dataset.f; const scope=bar.nextElementSibling.closest('section');
+    scope.querySelectorAll('#'+ (barId==='filters'?'taskroot':barId==='ofilters'?'outreachroot':'marketingroot')+' .task').forEach(t=>{
+      t.style.display=(f==='all'||t.dataset.owner===f)?'block':'none';
+    });
+  });
+}
+['filters','ofilters','mfilters'].forEach(bindFilter);
+function syncFilters(){ document.querySelectorAll('.task').forEach(t=>{const s=S.tasks[t.dataset.id];t.dataset.owner=(s&&s.owner)||'Unassigned';}); }
+
+/* ---------- EDITABLE FIELDS ---------- */
+document.querySelectorAll('[data-save]').forEach(el=>{
+  const k=el.dataset.save; if(S.fields[k]!=null) el.value=S.fields[k];
+  el.addEventListener('input',()=>{S.fields[k]=el.value;save();});
+});
+
+/* ---------- NAV ---------- */
+function go(tab){ document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===tab));
+  document.querySelectorAll('section').forEach(x=>x.classList.toggle('active',x.id===tab)); window.scrollTo({top:0,behavior:'smooth'}); }
+document.getElementById('nav').addEventListener('click',e=>{if(e.target.dataset.tab)go(e.target.dataset.tab);});
+
+renderGoals(); rerenderAll();
+</script>
+</body>
+</html>
