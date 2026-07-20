@@ -148,8 +148,8 @@
 		{
 			"id": "leftbodyrect",
 			"type": "rectangle",
-			"x": 79.86473630620611,
-			"y": 200.26381948550443,
+			"x": 80.00016954586835,
+			"y": 200.2663287643565,
 			"width": 561.9885569412614,
 			"height": 437.60560805557867,
 			"angle": 0,
@@ -166,8 +166,8 @@
 				"type": 3
 			},
 			"seed": 106,
-			"version": 72,
-			"versionNonce": 1137269592,
+			"version": 75,
+			"versionNonce": 1189291816,
 			"isDeleted": false,
 			"boundElements": [
 				{
@@ -175,7 +175,7 @@
 					"id": "9pJ6CTkh"
 				}
 			],
-			"updated": 1784524116835,
+			"updated": 1784524331159,
 			"link": null,
 			"locked": false,
 			"index": "a5",
@@ -184,10 +184,10 @@
 		{
 			"id": "9pJ6CTkh",
 			"type": "text",
-			"x": 84.86473630620611,
-			"y": 269.06662351329373,
-			"width": 528.7354736328125,
-			"height": 300,
+			"x": 85.00016954586835,
+			"y": 229.06913279214584,
+			"width": 548.383544921875,
+			"height": 380,
 			"angle": 0,
 			"strokeColor": "#1e1e1e",
 			"backgroundColor": "transparent",
@@ -201,20 +201,20 @@
 			"index": "a5V",
 			"roundness": null,
 			"seed": 1746887720,
-			"version": 61,
-			"versionNonce": 956726568,
+			"version": 302,
+			"versionNonce": 2041765208,
 			"isDeleted": false,
 			"boundElements": [],
-			"updated": 1784524126104,
+			"updated": 1784524341778,
 			"locked": false,
-			"text": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work\nhappens\n\n• Outreach + Marketing playbooks live next to the tasks that use\nthem (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly\ncontribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great\nfor deep planning & research-backed decisions",
-			"rawText": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
+			"text": "Purpose: This is an entire working system for us, where we can view\nweekly goals, outreach flows, marketing playbooks, etc, in one place to\nbe able to edit and work off of. Its job is to be the actual\nproduction tool for running the podcast, not just a status update.\n\n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work\nhappens\n\n• Outreach + Marketing playbooks live next to the tasks that use\nthem (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly\ncontribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great\nfor deep planning & research-backed decisions",
+			"rawText": "Purpose: This is an entire working system for us, where we can view weekly goals, outreach flows, marketing playbooks, etc, in one place to be able to edit and work off of. Its job is to be the actual production tool for running the podcast, not just a status update.\n\n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
 			"fontSize": 16,
 			"fontFamily": 5,
 			"textAlign": "left",
 			"verticalAlign": "middle",
 			"containerId": "leftbodyrect",
-			"originalText": "Purpose: To be \n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
+			"originalText": "Purpose: This is an entire working system for us, where we can view weekly goals, outreach flows, marketing playbooks, etc, in one place to be able to edit and work off of. Its job is to be the actual production tool for running the podcast, not just a status update.\n\n\n• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
 			"autoResize": true,
 			"lineHeight": 1.25,
 			"hasTextLink": false
@@ -534,8 +534,8 @@
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
 		"currentItemFrameRole": null,
-		"scrollX": 2.428603173495837,
-		"scrollY": -77.85039643618252,
+		"scrollX": 2.42860317349583,
+		"scrollY": -98.96197669352156,
 		"zoom": {
 			"value": 0.89998
 		},
