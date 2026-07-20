@@ -2,7 +2,7 @@
 Should have task system
 Should tell us what is needed for us to do based on specific goals and timeline
 
-I am a part of three different team members working on making this podcast. All we have right now is the logo, a slack channel, and an understanding of why we want to do this. I
+I am a part of three different team members working on making this podcast. All we have right now is the logo, a slack channel, and an understanding of why we want to do this. I want to get started and make sure we know what tasks should be done, what goals we should achieve this week (such as how many people we should reach out to, etc), understand what is needed based off of goals and timelines. I want it to sync to Obsidian notes. So like on Obsidian note s
 
 That's the exact right instinct to slow down on — "should have a task system" is a wish, not a spec, and the gap between those two is where all the ambiguity lives. Here's a simple way to close that gap for anything you write down.
 
