@@ -2,8 +2,6 @@ Tags
 Intent 
 Why are we moved by his story? 
 ___
-Excali embed of their Timeline 
-
 Prep: what to read and watch beforehand 
 
 Sources

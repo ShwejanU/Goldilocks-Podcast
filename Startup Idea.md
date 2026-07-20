@@ -1,5 +1,4 @@
-f]\\\\\\\\\\\\\___
-
+___
 Why not create a network graph for everyone? 
 
 They give us phones contact, Instagram handle, x handle, and LinkedIn. 
