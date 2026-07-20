@@ -1,8 +1,17 @@
-Tags 
-Intent 
+---
+tags:
+  - passed
+excalidraw-plugin:
+aliases:
+cssclasses:
+---
+**Intent**: 
 Why are we moved by his story? 
 ___
 Prep: what to read and watch beforehand 
+
+Timeline:
+Of their story 
 
 Sources
 1. LinkedIn/social media 
