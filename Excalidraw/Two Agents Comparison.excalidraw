@@ -147,7 +147,7 @@
 			"id": "leftbodyrect",
 			"type": "rectangle",
 			"x": 80,
-			"y": 200,
+			"y": 200.39938836186138,
 			"width": 561.9885569412614,
 			"height": 437.60560805557867,
 			"angle": 0,
@@ -164,8 +164,8 @@
 				"type": 3
 			},
 			"seed": 106,
-			"version": 68,
-			"versionNonce": 924209752,
+			"version": 70,
+			"versionNonce": 1291258712,
 			"isDeleted": false,
 			"boundElements": [
 				{
@@ -173,7 +173,7 @@
 					"id": "9pJ6CTkh"
 				}
 			],
-			"updated": 1784522954866,
+			"updated": 1784523654444,
 			"link": null,
 			"locked": false,
 			"index": "a5",
@@ -183,7 +183,7 @@
 			"id": "9pJ6CTkh",
 			"type": "text",
 			"x": 85,
-			"y": 288.8028040277893,
+			"y": 289.2021923896507,
 			"width": 528.7354736328125,
 			"height": 260,
 			"angle": 0,
@@ -199,11 +199,11 @@
 			"index": "a5V",
 			"roundness": null,
 			"seed": 1746887720,
-			"version": 38,
-			"versionNonce": 2070630488,
+			"version": 40,
+			"versionNonce": 229367896,
 			"isDeleted": false,
 			"boundElements": null,
-			"updated": 1784522980732,
+			"updated": 1784523654444,
 			"locked": false,
 			"text": "• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work\nhappens\n\n• Outreach + Marketing playbooks live next to the tasks that use\nthem (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly\ncontribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great\nfor deep planning & research-backed decisions",
 			"rawText": "• A full workspace we work INSIDE, not just a report we read\n\n• Click tasks, self-assign, add notes per goal right where the work happens\n\n• Outreach + Marketing playbooks live next to the tasks that use them (templates, tactics, tools all in one place)\n\n• Visual progress we can browse anytime: monthly heatmap, weekly contribution bars\n\n• Forces us to build real systems (RSS, hosting, automation), great for deep planning & research-backed decisions",
@@ -528,10 +528,10 @@
 		"currentItemEndArrowhead": "arrow",
 		"currentItemArrowType": "round",
 		"currentItemFrameRole": null,
-		"scrollX": 361.0907627488972,
-		"scrollY": 233.56086787209802,
+		"scrollX": 8.566888166752449,
+		"scrollY": -27.376245610805313,
 		"zoom": {
-			"value": 0.577889
+			"value": 0.509775
 		},
 		"currentItemRoundness": "round",
 		"gridSize": 20,
