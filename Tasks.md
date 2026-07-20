@@ -61,6 +61,8 @@
 
 ## 📇 Outreach (everyone: 1 action/day minimum)
 
+Guest Pipeline Tracker-
+
 - [ ] Build the 15-name guest pipeline tracker `@Nikki?`
 - [ ] Draft reusable outreach templates (cold / warm-intro / follow-up) `@?`
 - [ ] Pick guest #1 (friendly, reachable first-layer person) `@?`

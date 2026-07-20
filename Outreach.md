@@ -1,2 +1,3 @@
 Guest Pipeline Tracker- 
-**Guest pipeline tracker (Google Sheets):** [https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit](https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit) 
+
+https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit?usp=sharing 
