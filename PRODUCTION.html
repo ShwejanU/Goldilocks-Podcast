@@ -24,6 +24,10 @@
   header p{margin:3px 0 0;color:var(--gold-soft);font-size:13px}
   .savebtn{background:var(--gold);color:var(--red-deep);border:none;border-radius:9px;padding:9px 16px;font-weight:800;cursor:pointer;font-size:13px}
   .savebtn:hover{background:var(--gold-soft)}
+  .undo-btn{background:#fff;color:var(--red-deep);border:1.5px solid var(--gold);border-radius:9px;padding:9px 12px;font-weight:800;cursor:pointer;font-size:13px}
+  .undo-btn:disabled{opacity:.4;cursor:default}
+  .whowrap{display:flex;align-items:center;gap:6px;color:var(--gold-soft);font-size:12px;font-weight:700}
+  .whowrap select{border-radius:8px;padding:5px 8px;font-weight:700;border:1.5px solid var(--gold);font-size:12px}
   .wrap{max-width:1120px;margin:0 auto;padding:20px}
   nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px;position:sticky;top:88px;z-index:15;background:rgba(251,243,228,.9);backdrop-filter:blur(4px);padding:6px 0;border-radius:10px}
   nav button{background:var(--card);border:1.5px solid #e6d3a8;color:var(--ink);padding:9px 15px;border-radius:999px;
@@ -45,8 +49,11 @@
   .Nikki{background:#B01722}.Shwejan{background:#2f6f8f}.Malhar{background:#6a4c93}.Unassigned{background:#b0a294}.Team{background:#7d6a5f}
   select.owner{border:1.5px solid #e6d3a8;border-radius:8px;padding:4px 8px;font-weight:700;font-size:12px;background:#fff;cursor:pointer}
   .status{font-size:12px;font-weight:700;padding:2px 9px;border-radius:6px}
-  .s-todo{background:#f3e3c6;color:#8a6a10}.s-done{background:#d5efdd;color:var(--green)}
+  .s-todo{background:#f3e3c6;color:#8a6a10}.s-done{background:#d5efdd;color:var(--green)}.s-blocked{background:#fde2df;color:#b0271e}
+  .badge-overdue{background:#fde2df;color:#b0271e;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px}
+  .badge-stale{background:#fff0cf;color:#8a6a10;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px}
   .task{background:var(--card);border:1px solid #eaddc0;border-radius:12px;margin:9px 0;box-shadow:var(--shadow);overflow:hidden}
+  .task.blocked{border-left:4px solid #b0271e}
   .task .head{display:flex;align-items:center;gap:11px;padding:11px 14px;cursor:pointer;flex-wrap:wrap}
   .task .head:hover{background:#fff6df}
   .task input.chk{width:18px;height:18px;accent-color:var(--red);flex:0 0 auto}
@@ -61,9 +68,10 @@
   .rec{background:#fff7e0;border-left:4px solid var(--gold);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0}
   .icnbtn{background:none;border:1.5px solid var(--gold);color:var(--red-deep);border-radius:7px;padding:3px 9px;font-size:12px;font-weight:700;cursor:pointer}
   .icnbtn:hover{background:#fbeccb}
-  .filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
   .filters button{background:var(--card);border:1.5px solid #e6d3a8;padding:6px 13px;border-radius:999px;cursor:pointer;font-weight:600;font-size:13px}
   .filters button.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .searchbox{border:1.5px solid #e6d3a8;border-radius:999px;padding:6px 14px;font-size:13px;min-width:180px;font:inherit}
   .goal-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
   .goal-row input[type=date]{border:1.5px solid var(--gold);border-radius:8px;padding:5px 8px;font-weight:700;color:var(--red-deep);background:#fffdf6}
   .goal-title{border:none;background:transparent;font-weight:800;font-size:16px;color:var(--ink);width:100%;padding:2px 0}
@@ -103,6 +111,8 @@
   .logtabs button.on.Shwejan{background:#2f6f8f;border-color:#2f6f8f}
   .logtabs button.on.Malhar{background:#6a4c93;border-color:#6a4c93}
   .logtabs button.on.Team{background:#7d6a5f;border-color:#7d6a5f}
+  .activity-item{font-size:13px;padding:6px 0;border-bottom:1px dashed #ecdcbd}
+  .activity-item time{color:var(--muted);font-size:11px;display:block}
 </style>
 </head>
 <body>
@@ -116,6 +126,15 @@
       </div>
     </div>
     <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <span class="whowrap">You are:
+        <select id="whoSelect">
+          <option value="">Select…</option>
+          <option value="Nikki">Nikki</option>
+          <option value="Shwejan">Shwejan</option>
+          <option value="Malhar">Malhar</option>
+        </select>
+      </span>
+      <button class="undo-btn" id="undoBtn" onclick="undoLast()" disabled>↩ Undo</button>
       <span class="note" id="syncStatus" style="color:var(--gold-soft)">⚪ Not connected</span>
       <button class="savebtn" onclick="connectFile()">🔌 Connect to repo file</button>
       <button class="savebtn" onclick="exportFile()">💾 Download instead</button>
@@ -124,7 +143,7 @@
 </header>
 
 <div class="wrap">
-  <p class="note" style="margin-top:0" id="syncNote">⚠️ <b>Click "Connect to repo file" once</b> (Chrome/Edge only) and select the <code>PRODUCTION.html</code> inside your local repo clone. After that, every edit here auto-saves straight to that file on disk — no downloading. Pair it with the auto-commit cron job so it pushes to GitHub by itself. If your browser doesn't support this (Firefox/Safari), use <b>Download instead</b> and drop the file into your repo folder manually.</p>
+  <p class="note" style="margin-top:0" id="syncNote">⚠️ <b>Click "Connect to repo file" once</b> (Chrome/Edge only) and select the <code>PRODUCTION.html</code> inside your local repo clone. After that, every edit here auto-saves straight to that file on disk — no downloading. Pair it with the auto-commit cron job so it pushes to GitHub by itself. If your browser doesn't support this (Firefox/Safari), use <b>Download instead</b> and drop the file into your repo folder manually. Pick <b>"You are"</b> above so edits get attributed correctly in the activity feed.</p>
 
   <nav id="nav">
     <button class="active" data-tab="dash">📊 Dashboard</button>
@@ -145,6 +164,7 @@
       <div class="box" onclick="go('tasks')"><b id="k-done">0</b><span>Tasks done</span></div>
       <div class="box" onclick="go('tasks')"><b id="k-total">0</b><span>Total tasks</span></div>
       <div class="box"><b id="k-week">0</b><span>Done this week</span></div>
+      <div class="box" onclick="go('tasks')"><b id="k-blocked">0</b><span>Blocked</span></div>
     </div>
 
     <div class="card">
@@ -167,6 +187,12 @@
     </div>
 
     <div class="card">
+      <h3>🕒 Recent activity</h3>
+      <p class="note">What's changed lately, across the whole team.</p>
+      <div id="activityRoot"></div>
+    </div>
+
+    <div class="card">
       <h3>📅 This month's work</h3>
       <p class="note" id="monthSummary"></p>
       <div class="month-grid" id="monthGrid"></div>
@@ -184,13 +210,15 @@
   <!-- TASKS -->
   <section id="tasks">
     <h2>Task list</h2>
-    <p class="note">Click a task to expand what to do + my recommendation. Click ✏️ to edit its text. Assign with the dropdown. Add your own with the button below.</p>
+    <p class="note">Click a task to expand it — title, details, due date and blocked-reason are all editable right there, no popups. Assign with the dropdown. Add your own with the button below, or press <code>n</code> anywhere.</p>
     <div class="filters" id="filters">
       <button class="on" data-f="all">All</button>
       <button data-f="Nikki">Nikki</button>
       <button data-f="Shwejan">Shwejan</button>
       <button data-f="Malhar">Malhar</button>
       <button data-f="Unassigned">Unassigned</button>
+      <button data-f="__blocked">🚧 Blocked</button>
+      <input class="searchbox" id="search-tasks" placeholder="🔎 Search tasks…">
     </div>
     <button class="btn" onclick="toggleAddForm('tasks')">+ Add a task</button>
     <div class="addform" id="addform-tasks">
@@ -256,6 +284,8 @@
     <div class="filters" id="ofilters">
       <button class="on" data-f="all">All</button>
       <button data-f="Nikki">Nikki</button><button data-f="Shwejan">Shwejan</button><button data-f="Malhar">Malhar</button><button data-f="Unassigned">Unassigned</button>
+      <button data-f="__blocked">🚧 Blocked</button>
+      <input class="searchbox" id="search-outreach" placeholder="🔎 Search outreach…">
     </div>
     <button class="btn" onclick="toggleAddForm('outreach')">+ Add an outreach task</button>
     <div class="addform" id="addform-outreach">
@@ -315,6 +345,8 @@
     <div class="filters" id="mfilters">
       <button class="on" data-f="all">All</button>
       <button data-f="Nikki">Nikki</button><button data-f="Shwejan">Shwejan</button><button data-f="Malhar">Malhar</button><button data-f="Unassigned">Unassigned</button>
+      <button data-f="__blocked">🚧 Blocked</button>
+      <input class="searchbox" id="search-marketing" placeholder="🔎 Search marketing…">
     </div>
     <button class="btn" onclick="toggleAddForm('marketing')">+ Add a marketing task</button>
     <div class="addform" id="addform-marketing">
@@ -358,6 +390,7 @@
       <li>✔️ <b>Cadence:</b> weekly episodes once publishing starts.</li>
       <li>✔️ <b>Budget:</b> near-zero ($0–50/mo) — free tiers + cheapest mic option; upgrade only what hurts.</li>
     </ul>
+    <ul class="clean" id="decisionsExtra"></ul>
     <textarea class="edit" id="dec-input" rows="2" placeholder="Add a new settled decision…"></textarea>
     <button class="btn" style="margin-top:8px" onclick="addDecision()">Add decision</button>
   </section>
@@ -374,7 +407,7 @@
   </section>
 </div>
 
-<footer>Goldilocks Production HQ v3 · everything editable, saved on this device · click "Save & download" to sync to GitHub.</footer>
+<footer>Goldilocks Production HQ v4 · everything editable, synced automatically when connected · "Download instead" is the manual fallback.</footer>
 
 <script type="application/json" id="GL_DATA">
 {
@@ -427,13 +460,14 @@
     "Shwejan": [],
     "Malhar": [],
     "Team": [
-      {"ts":"2026-07-20T00:00:00Z","text":"Production HQ v3 built. Goals, tasks, and logs now fully editable and persist. Cadence locked to weekly, budget locked to near-zero. Guest #1 still open."}
+      {"ts":"2026-07-20T00:00:00Z","text":"Production HQ v4 built: blocked status, due dates + staleness badges, activity feed, search, undo, and conflict-safe disk sync. Cadence locked to weekly, budget locked to near-zero. Guest #1 still open."}
     ]
   },
   "decisions": [],
   "openQuestions": [
     {"id":"q4","q":"Who is guest #1?","desc":"Pick one real, friendly first-layer person now — the test episode needs a name, not a category.","answer":""}
-  ]
+  ],
+  "activity": []
 }
 </script>
 
@@ -449,10 +483,67 @@ if(cached){
   }catch(e){ STATE = DEFAULT_STATE; }
 } else { STATE = DEFAULT_STATE; }
 
+function normalizeState(){
+  STATE.activity = STATE.activity || [];
+  STATE.decisions = STATE.decisions || [];
+  STATE.openQuestions = STATE.openQuestions || [];
+  (STATE.tasks||[]).forEach(t=>{
+    if(t.blocked===undefined) t.blocked=false;
+    if(t.blockedReason===undefined) t.blockedReason='';
+    if(t.due===undefined) t.due=null;
+    if(t.updatedAt===undefined) t.updatedAt=null;
+    if(t.updatedBy===undefined) t.updatedBy=null;
+  });
+  (STATE.goals||[]).forEach(g=>{
+    if(g.updatedAt===undefined) g.updatedAt=null;
+    if(g.updatedBy===undefined) g.updatedBy=null;
+  });
+}
+normalizeState();
+
 function persist(){ STATE.meta.savedAt = new Date().toISOString(); localStorage.setItem('gl3_state', JSON.stringify(STATE)); writeToDisk(); }
+
+/* ---------- IDENTITY ---------- */
+function currentUser(){ return localStorage.getItem('gl3_who')||''; }
+(function(){ const saved=localStorage.getItem('gl3_who'); const sel=document.getElementById('whoSelect'); if(sel && saved) sel.value=saved; })();
+document.getElementById('whoSelect').addEventListener('change', e=>{ localStorage.setItem('gl3_who', e.target.value); });
+
+/* ---------- ACTIVITY FEED ---------- */
+function pushActivityFor(text){
+  STATE.activity = STATE.activity || [];
+  STATE.activity.unshift({ts:new Date().toISOString(), text});
+  STATE.activity = STATE.activity.slice(0,50);
+}
+function fmtDateTime(iso){ const d=new Date(iso); return d.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
+function renderActivity(){
+  const root=document.getElementById('activityRoot'); if(!root) return;
+  const items=(STATE.activity||[]).slice(0,10);
+  if(!items.length){ root.innerHTML='<p class="note">Nothing logged yet — activity shows up here as the team works.</p>'; return; }
+  root.innerHTML = items.map(a=>`<div class="activity-item"><time>${fmtDateTime(a.ts)}</time>${a.text}</div>`).join('');
+}
+
+/* ---------- UNDO ---------- */
+let undoStack = [];
+function snapshotUndo(){
+  undoStack.push(JSON.stringify(STATE));
+  if(undoStack.length>20) undoStack.shift();
+  const btn=document.getElementById('undoBtn'); if(btn) btn.disabled=false;
+}
+function undoLast(){
+  if(!undoStack.length) return;
+  STATE = JSON.parse(undoStack.pop());
+  persist();
+  renderEverything();
+  const btn=document.getElementById('undoBtn'); if(btn) btn.disabled = undoStack.length===0;
+}
+document.body.addEventListener('focusin', e=>{
+  const d=e.target.dataset;
+  if(d && (d.goal || d.field || d.q)) snapshotUndo();
+});
 
 /* ---------- LIVE FILE SYNC (File System Access API, Chrome/Edge only) ---------- */
 let fileHandle = null;
+let lastKnownDiskSavedAt = null;
 function idbOpen(){ return new Promise((res,rej)=>{ const r=indexedDB.open('gl3_fs',1);
   r.onupgradeneeded=()=>r.result.createObjectStore('handles'); r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
 async function idbGet(key){ const db=await idbOpen(); return new Promise((res,rej)=>{ const tx=db.transaction('handles','readonly');
@@ -462,6 +553,58 @@ async function idbSet(key,val){ const db=await idbOpen(); return new Promise((re
 
 function setSyncStatus(text,color){ const el=document.getElementById('syncStatus'); if(el){el.textContent=text; el.style.color=color||'var(--gold-soft)';} }
 
+function extractStateFromHTML(text){
+  const m = text.match(/<script type="application\/json" id="GL_DATA">([\s\S]*?)<\/script>/);
+  if(!m) return null;
+  try{ return JSON.parse(m[1]); }catch(e){ return null; }
+}
+function mergeById(diskArr, localArr, idKey){
+  const map={};
+  (diskArr||[]).forEach(x=>map[x[idKey]]=x);
+  (localArr||[]).forEach(x=>{
+    const existing=map[x[idKey]];
+    if(!existing){ map[x[idKey]]=x; return; }
+    const dTime=existing.updatedAt?new Date(existing.updatedAt).getTime():0;
+    const lTime=x.updatedAt?new Date(x.updatedAt).getTime():0;
+    map[x[idKey]] = (lTime>=dTime) ? x : existing;
+  });
+  return Object.values(map);
+}
+function mergeLogs(diskLog, localLog){
+  const out={};
+  const people=new Set([...Object.keys(diskLog||{}), ...Object.keys(localLog||{})]);
+  people.forEach(p=>{
+    const combined=[...(diskLog?.[p]||[]), ...(localLog?.[p]||[])];
+    const seen=new Set(); const uniq=[];
+    combined.forEach(e=>{ const key=e.ts+'|'+e.text; if(!seen.has(key)){ seen.add(key); uniq.push(e); } });
+    uniq.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+    out[p]=uniq;
+  });
+  return out;
+}
+function mergeSimpleArray(diskArr, localArr){
+  const combined=[...(diskArr||[]), ...(localArr||[])];
+  return [...new Set(combined)];
+}
+function mergeActivity(diskAct, localAct){
+  const combined=[...(diskAct||[]), ...(localAct||[])];
+  const seen=new Set(); const uniq=[];
+  combined.forEach(a=>{ const key=a.ts+'|'+a.text; if(!seen.has(key)){ seen.add(key); uniq.push(a); } });
+  uniq.sort((a,b)=>new Date(b.ts)-new Date(a.ts));
+  return uniq.slice(0,50);
+}
+function mergeStates(diskState, localState){
+  return {
+    meta:{ savedAt:new Date().toISOString(), lastAgentRun: (diskState.meta&&diskState.meta.lastAgentRun) || (localState.meta&&localState.meta.lastAgentRun) || null },
+    goals: mergeById(diskState.goals, localState.goals, 'id'),
+    tasks: mergeById(diskState.tasks, localState.tasks, 'id'),
+    log: mergeLogs(diskState.log, localState.log),
+    decisions: mergeSimpleArray(diskState.decisions, localState.decisions),
+    openQuestions: mergeById(diskState.openQuestions, localState.openQuestions, 'id'),
+    activity: mergeActivity(diskState.activity, localState.activity)
+  };
+}
+
 async function connectFile(){
   if(!window.showOpenFilePicker){ alert("Your browser doesn't support direct file sync. Use 'Download instead' — Chrome or Edge support this feature."); return; }
   try{
@@ -470,8 +613,17 @@ async function connectFile(){
     if(perm!=='granted'){ setSyncStatus('⚪ Permission denied','#f0b'); return; }
     fileHandle = handle;
     await idbSet('gl3_handle', handle);
+    try{
+      const file=await handle.getFile(); const text=await file.text();
+      const onDisk=extractStateFromHTML(text);
+      if(onDisk){
+        STATE = mergeStates(onDisk, STATE);
+        lastKnownDiskSavedAt = (onDisk.meta && onDisk.meta.savedAt) || null;
+        renderEverything();
+      }
+    }catch(e){ console.error(e); }
     setSyncStatus('🟢 Connected — writes on every edit', '#9fe6b0');
-    writeToDisk();
+    persist();
   }catch(err){ if(err.name!=='AbortError') console.error(err); }
 }
 async function tryReconnect(){
@@ -479,13 +631,34 @@ async function tryReconnect(){
   try{
     const handle = await idbGet('gl3_handle'); if(!handle) return;
     const perm = await handle.queryPermission({mode:'readwrite'});
-    if(perm==='granted'){ fileHandle=handle; setSyncStatus('🟢 Connected — writes on every edit','#9fe6b0'); }
-    else { setSyncStatus('🟡 Reconnect needed (click Connect)','#e8c86b'); }
+    if(perm==='granted'){
+      fileHandle=handle;
+      try{
+        const file=await handle.getFile(); const text=await file.text();
+        const onDisk=extractStateFromHTML(text);
+        if(onDisk){
+          STATE = mergeStates(onDisk, STATE);
+          lastKnownDiskSavedAt = (onDisk.meta && onDisk.meta.savedAt) || null;
+          renderEverything();
+        }
+      }catch(e){ console.error(e); }
+      setSyncStatus('🟢 Connected — writes on every edit','#9fe6b0');
+    } else { setSyncStatus('🟡 Reconnect needed (click Connect)','#e8c86b'); }
   }catch(e){ /* no stored handle yet */ }
 }
 async function writeToDisk(){
   if(!fileHandle) return;
   try{
+    const file = await fileHandle.getFile();
+    const onDiskText = await file.text();
+    const onDisk = extractStateFromHTML(onDiskText);
+    if(onDisk && onDisk.meta && lastKnownDiskSavedAt && onDisk.meta.savedAt !== lastKnownDiskSavedAt){
+      STATE = mergeStates(onDisk, STATE);
+      STATE.meta.savedAt = new Date().toISOString();
+      localStorage.setItem('gl3_state', JSON.stringify(STATE));
+      renderEverything();
+      setSyncStatus('🟡 Merged concurrent edits · '+new Date().toLocaleTimeString(),'#e8c86b');
+    }
     const dataScript=document.getElementById('GL_DATA');
     const prevText=dataScript.textContent;
     dataScript.textContent = JSON.stringify(STATE, null, 2);
@@ -494,6 +667,7 @@ async function writeToDisk(){
     const writable = await fileHandle.createWritable();
     await writable.write(html);
     await writable.close();
+    lastKnownDiskSavedAt = STATE.meta.savedAt;
     setSyncStatus('🟢 Saved to disk · '+new Date().toLocaleTimeString(),'#9fe6b0');
   }catch(err){ console.error(err); setSyncStatus('🔴 Write failed — reconnect','#ff8080'); }
 }
@@ -502,18 +676,44 @@ async function writeToDisk(){
 const OWNERS=["Unassigned","Nikki","Shwejan","Malhar"];
 
 /* ---------- TASK RENDER ---------- */
+function escAttr(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+function taskBadges(t){
+  let out='';
+  if(t.due && !t.done){
+    const due=new Date(t.due+'T23:59:59');
+    if(due.getTime()<Date.now()) out+=' <span class="badge-overdue">⏰ Overdue</span>';
+  }
+  if(!t.done && t.owner!=='Unassigned' && t.updatedAt){
+    const days=(Date.now()-new Date(t.updatedAt).getTime())/864e5;
+    if(days>5) out+=' <span class="badge-stale">💤 Stale '+Math.floor(days)+'d</span>';
+  }
+  return out;
+}
+function taskMetaLine(t){
+  return t.updatedAt ? ('Last updated '+fmtDateTime(t.updatedAt)+(t.updatedBy?(' by '+t.updatedBy):'')) : 'No edits yet.';
+}
 function taskHTML(t){
   const opts=OWNERS.map(o=>`<option ${t.owner===o?'selected':''}>${o}</option>`).join('');
-  return `<div class="task ${t.done?'done':''}" data-id="${t.id}" data-owner="${t.owner}">
+  return `<div class="task ${t.done?'done':''} ${t.blocked?'blocked':''}" data-id="${t.id}" data-owner="${t.owner}" data-blocked="${t.blocked?'1':'0'}">
     <div class="head">
       <input type="checkbox" class="chk" ${t.done?'checked':''}>
-      <span class="label" data-edit="title">${t.title}</span>
+      <span class="label">${t.title}</span>
       <select class="owner ${t.owner}" onclick="event.stopPropagation()">${opts}</select>
-      <span class="status ${t.done?'s-done':'s-todo'}">${t.done?'done':'to do'}</span>
-      <button class="icnbtn" onclick="event.stopPropagation();editTask('${t.id}')">✏️</button>
+      ${taskBadges(t)}
+      <span class="status ${t.blocked?'s-blocked':(t.done?'s-done':'s-todo')}">${t.blocked?'blocked':(t.done?'done':'to do')}</span>
+      <button class="icnbtn" onclick="event.stopPropagation();toggleBlocked('${t.id}')">${t.blocked?'🚧 Unblock':'🚧 Block'}</button>
       <span class="caret">▶</span>
     </div>
-    <div class="detail" data-edit="detail">${t.detail||''}</div>
+    <div class="detail">
+      <label class="note" style="display:block">Title</label>
+      <input class="edit" data-field="title" data-id="${t.id}" value="${escAttr(t.title)}">
+      <label class="note" style="display:block;margin-top:8px">Details</label>
+      <textarea class="edit" data-field="detail" data-id="${t.id}" rows="4">${t.detail||''}</textarea>
+      <label class="note" style="display:block;margin-top:8px">Due date</label>
+      <input type="date" class="edit" style="width:auto" data-field="due" data-id="${t.id}" value="${t.due||''}">
+      ${t.blocked?`<label class="note" style="display:block;margin-top:8px">Why blocked?</label><textarea class="edit" data-field="blockedReason" data-id="${t.id}" rows="2">${t.blockedReason||''}</textarea>`:''}
+      <p class="note" style="margin-top:10px">${taskMetaLine(t)}</p>
+    </div>
   </div>`;
 }
 function renderPage(rootId, page){
@@ -531,7 +731,7 @@ function renderPage(rootId, page){
 }
 function renderAllTaskPages(){ renderPage('taskroot','core'); renderPage('outreachroot','outreach'); renderPage('marketingroot','marketing'); syncFilters(); }
 
-/* expand / edit / check / assign (event delegation) */
+/* expand / check / assign / blocked (event delegation) */
 document.body.addEventListener('click',e=>{
   const head=e.target.closest('.task .head');
   if(head && e.target.type!=='checkbox' && e.target.tagName!=='SELECT' && e.target.tagName!=='BUTTON'){
@@ -540,31 +740,60 @@ document.body.addEventListener('click',e=>{
 });
 document.body.addEventListener('change',e=>{
   const taskEl=e.target.closest('.task'); if(!taskEl)return;
+  if(e.target.dataset.field) return; // handled by the field-level listener below
   const t=STATE.tasks.find(x=>x.id===taskEl.dataset.id); if(!t)return;
-  if(e.target.classList.contains('chk')){ t.done=e.target.checked; t.doneAt=t.done?new Date().toISOString():null; }
-  if(e.target.classList.contains('owner')){ t.owner=e.target.value; }
+  snapshotUndo();
+  if(e.target.classList.contains('chk')){
+    t.done=e.target.checked; t.doneAt=t.done?new Date().toISOString():null;
+    t.updatedAt=new Date().toISOString(); t.updatedBy=currentUser();
+    pushActivityFor(`${currentUser()||'Someone'} marked "${t.title}" ${t.done?'done':'not done'}`);
+  }
+  if(e.target.classList.contains('owner')){
+    t.owner=e.target.value; t.updatedAt=new Date().toISOString(); t.updatedBy=currentUser();
+    pushActivityFor(`${currentUser()||'Someone'} assigned "${t.title}" to ${t.owner}`);
+  }
   persist(); renderAllTaskPages(); rerenderDash();
 });
-function editTask(id){
+function toggleBlocked(id){
+  snapshotUndo();
   const t=STATE.tasks.find(x=>x.id===id); if(!t)return;
-  const newTitle=prompt("Edit task title:", t.title);
-  if(newTitle===null)return;
-  const newDetail=prompt("Edit task details (HTML ok, or leave as-is):", t.detail||'');
-  if(newDetail===null)return;
-  t.title=newTitle; t.detail=newDetail;
+  t.blocked=!t.blocked;
+  if(!t.blocked) t.blockedReason='';
+  t.updatedAt=new Date().toISOString(); t.updatedBy=currentUser();
+  pushActivityFor(`${currentUser()||'Someone'} ${t.blocked?'marked':'unmarked'} "${t.title}" as blocked`);
   persist(); renderAllTaskPages(); rerenderDash();
 }
+
+/* task field edits: live update on input, activity log on change (blur) */
+document.body.addEventListener('input', e=>{
+  const id=e.target.dataset.id, field=e.target.dataset.field;
+  if(!id || !field) return;
+  const t=STATE.tasks.find(x=>x.id===id); if(!t) return;
+  t[field]=e.target.value;
+  t.updatedAt=new Date().toISOString(); t.updatedBy=currentUser();
+  if(field==='title'){ const lbl=e.target.closest('.task')?.querySelector('.label'); if(lbl) lbl.textContent=e.target.value; }
+  persist();
+});
+document.body.addEventListener('change', e=>{
+  const id=e.target.dataset.id, field=e.target.dataset.field;
+  if(!id || !field) return;
+  const t=STATE.tasks.find(x=>x.id===id); if(!t) return;
+  pushActivityFor(`${currentUser()||'Someone'} updated "${t.title}"`);
+  persist();
+});
 
 /* ---------- ADD TASK ---------- */
 function toggleAddForm(which){ document.getElementById('addform-'+which).classList.toggle('open'); }
 function addTask(page){
   const title=document.getElementById('new-'+page+'-title').value.trim();
   if(!title){ alert('Give the task a title.'); return; }
+  snapshotUndo();
   const detail=document.getElementById('new-'+page+'-detail').value.trim();
   const owner=document.getElementById('new-'+page+'-owner').value;
   const cat = page==='core' ? document.getElementById('new-tasks-cat').value : '';
   const id = page+'-'+Date.now();
-  STATE.tasks.push({id,page,cat,title,detail:detail?('<p>'+detail+'</p>'):'',owner,done:false,doneAt:null});
+  STATE.tasks.push({id,page,cat,title,detail:detail?('<p>'+detail+'</p>'):'',owner,done:false,doneAt:null,blocked:false,blockedReason:'',due:null,updatedAt:new Date().toISOString(),updatedBy:currentUser()});
+  pushActivityFor(`${currentUser()||'Someone'} added task "${title}"`);
   document.getElementById('new-'+page+'-title').value='';
   document.getElementById('new-'+page+'-detail').value='';
   toggleAddForm(page==='core'?'tasks':page);
@@ -584,7 +813,8 @@ function renderGoals(){
       <label class="note">Target:<br><input type="date" value="${g.date}" data-goal="${g.id}" data-f="date"></label>
     </div>
     <div class="bar"><i style="width:${goalPct(g.id)}%"></i></div>
-    <textarea class="edit" style="margin-top:10px" placeholder="Notes / specifics for this goal (who's driving it, blockers, what's needed)…" data-goal="${g.id}" data-f="notes" rows="2">${g.notes||''}</textarea>`;
+    <textarea class="edit" style="margin-top:10px" placeholder="Notes / specifics for this goal (who's driving it, blockers, what's needed)…" data-goal="${g.id}" data-f="notes" rows="2">${g.notes||''}</textarea>
+    <p class="note" style="margin-top:8px">${g.updatedAt?('Last updated '+fmtDateTime(g.updatedAt)+(g.updatedBy?(' by '+g.updatedBy):'')):''}</p>`;
     root.appendChild(c);
   });
 }
@@ -601,8 +831,17 @@ document.getElementById('goalroot').addEventListener('input',e=>{
   g[f]=e.target.value; persist();
   if(f!=='notes' && f!=='title' && f!=='desc'){ renderGoals(); } // date change re-render bar
 });
+document.getElementById('goalroot').addEventListener('change',e=>{
+  const gid=e.target.dataset.goal; if(!gid)return;
+  const g=STATE.goals.find(x=>x.id===gid); if(!g)return;
+  g.updatedAt=new Date().toISOString(); g.updatedBy=currentUser();
+  pushActivityFor(`${currentUser()||'Someone'} updated goal "${g.title}"`);
+  persist();
+});
 function resetGoals(){
+  snapshotUndo();
   STATE.goals.forEach(g=>{ const d=DEFAULT_STATE.goals.find(x=>x.id===g.id); if(d) g.date=d.date; });
+  pushActivityFor(`${currentUser()||'Someone'} reset all goal dates to default`);
   persist(); renderGoals();
 }
 
@@ -624,23 +863,26 @@ function renderLog(){
 function addLog(){
   const val=document.getElementById('log-input').value.trim();
   if(!val)return;
+  snapshotUndo();
   STATE.log[currentLogPerson]=STATE.log[currentLogPerson]||[];
   STATE.log[currentLogPerson].unshift({ts:new Date().toISOString(),text:val});
+  pushActivityFor(`${currentUser()||currentLogPerson} logged an update (${currentLogPerson})`);
   document.getElementById('log-input').value='';
   persist(); renderLog(); rerenderDash();
 }
 function fmtDate(iso){ const d=new Date(iso); return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
 
 /* ---------- DECISIONS ---------- */
-function renderDecisions(){
-  const extra=STATE.decisions.map(d=>`<li>✔️ ${d}</li>`).join('');
-  document.getElementById('decisionsList').insertAdjacentHTML('beforeend',extra);
+function renderDecisionsFull(){
+  const root=document.getElementById('decisionsExtra'); if(!root) return;
+  root.innerHTML = (STATE.decisions||[]).map(d=>`<li>✔️ ${d}</li>`).join('');
 }
 function addDecision(){
   const val=document.getElementById('dec-input').value.trim(); if(!val)return;
+  snapshotUndo();
   STATE.decisions.push(val); document.getElementById('dec-input').value='';
-  document.getElementById('decisionsList').insertAdjacentHTML('beforeend',`<li>✔️ ${val}</li>`);
-  persist();
+  pushActivityFor(`${currentUser()||'Someone'} added a decision: "${val}"`);
+  persist(); renderDecisionsFull();
 }
 
 /* ---------- OPEN QUESTIONS ---------- */
@@ -653,38 +895,65 @@ function renderQuestions(){
       <button class="icnbtn" style="margin-top:6px" onclick="resolveQuestion('${q.id}')">✔ Mark answered & move to Decisions</button></div>`);
   });
 }
-document.getElementById('openroot')?.addEventListener?.('input',()=>{});
 document.body.addEventListener('input',e=>{
   if(e.target.dataset.q){ const q=STATE.openQuestions.find(x=>x.id===e.target.dataset.q); if(q){q.answer=e.target.value; persist();} }
+});
+document.body.addEventListener('change',e=>{
+  if(e.target.dataset.q){
+    const q=STATE.openQuestions.find(x=>x.id===e.target.dataset.q);
+    if(q){ pushActivityFor(`${currentUser()||'Someone'} answered "${q.q}"`); persist(); }
+  }
 });
 function resolveQuestion(id){
   const q=STATE.openQuestions.find(x=>x.id===id); if(!q)return;
   if(!q.answer || !q.answer.trim()){ alert('Type an answer first.'); return; }
+  snapshotUndo();
   STATE.decisions.push(`${q.q} — ${q.answer}`);
   STATE.openQuestions = STATE.openQuestions.filter(x=>x.id!==id);
-  persist(); renderQuestions();
-  document.getElementById('decisionsList').insertAdjacentHTML('beforeend',`<li>✔️ ${q.q} — ${q.answer}</li>`);
+  pushActivityFor(`${currentUser()||'Someone'} answered "${q.q}"`);
+  persist(); renderQuestions(); renderDecisionsFull();
 }
 function addQuestion(){
   const val=document.getElementById('open-input').value.trim(); if(!val)return;
+  snapshotUndo();
   STATE.openQuestions.push({id:'q-'+Date.now(),q:val,desc:'',answer:''});
+  pushActivityFor(`${currentUser()||'Someone'} raised a question: "${val}"`);
   document.getElementById('open-input').value='';
   persist(); renderQuestions();
 }
 
-/* ---------- FILTERS ---------- */
+/* ---------- FILTERS + SEARCH ---------- */
+const filterState = { taskroot:{owner:'all',text:''}, outreachroot:{owner:'all',text:''}, marketingroot:{owner:'all',text:''} };
+function applyFilters(rootId){
+  const st=filterState[rootId]; if(!st) return;
+  const root=document.getElementById(rootId); if(!root) return;
+  root.querySelectorAll('.task').forEach(el=>{
+    const owner=el.dataset.owner, blocked=el.dataset.blocked==='1';
+    const ownerOk = st.owner==='all' ? true : (st.owner==='__blocked' ? blocked : owner===st.owner);
+    let textOk = true;
+    if(st.text){
+      const hay=((el.querySelector('.label')&&el.querySelector('.label').textContent)||'').toLowerCase() + ' ' +
+                 ((el.querySelector('.detail')&&el.querySelector('.detail').textContent)||'').toLowerCase();
+      textOk = hay.includes(st.text.toLowerCase());
+    }
+    el.style.display = (ownerOk && textOk) ? 'block' : 'none';
+  });
+}
 function bindFilter(barId, rootId){
   const bar=document.getElementById(barId); if(!bar)return;
   bar.addEventListener('click',e=>{ if(e.target.tagName!=='BUTTON')return;
     bar.querySelectorAll('button').forEach(b=>b.classList.remove('on')); e.target.classList.add('on');
-    const f=e.target.dataset.f;
-    document.getElementById(rootId).querySelectorAll('.task').forEach(t=>{
-      t.style.display=(f==='all'||t.dataset.owner===f)?'block':'none';
-    });
+    filterState[rootId].owner = e.target.dataset.f;
+    applyFilters(rootId);
   });
 }
+function bindSearch(inputId, rootId){
+  const input=document.getElementById(inputId); if(!input) return;
+  input.addEventListener('input', e=>{ filterState[rootId].text = e.target.value.trim(); applyFilters(rootId); });
+}
 bindFilter('filters','taskroot'); bindFilter('ofilters','outreachroot'); bindFilter('mfilters','marketingroot');
-function syncFilters(){}
+bindSearch('search-tasks','taskroot'); bindSearch('search-outreach','outreachroot'); bindSearch('search-marketing','marketingroot');
+function syncFilters(){ applyFilters('taskroot'); applyFilters('outreachroot'); applyFilters('marketingroot'); }
 
 /* ---------- DASHBOARD ---------- */
 function rerenderDash(){
@@ -694,6 +963,7 @@ function rerenderDash(){
   document.getElementById('k-pct').textContent=all.length?Math.round(done.length/all.length*100)+'%':'0%';
   const week=done.filter(t=>t.doneAt && (Date.now()-new Date(t.doneAt).getTime()<6048e5)).length;
   document.getElementById('k-week').textContent=week;
+  document.getElementById('k-blocked').textContent=all.filter(t=>t.blocked).length;
 
   // focus: 3 highest-priority incomplete tasks, prioritizing nearest incomplete goal's mapped tasks
   const map={g1:['e1','r1','r2','o3'],g2:['b1','b2','b3','d1'],g3:['ed1','ed2','d1','d3'],
@@ -720,6 +990,7 @@ function rerenderDash(){
 
   renderContrib();
   renderMonth();
+  renderActivity();
 }
 function renderContrib(){
   const root=document.getElementById('contrib');
@@ -775,8 +1046,29 @@ function go(tab){ document.querySelectorAll('#nav button').forEach(x=>x.classLis
   document.querySelectorAll('section').forEach(x=>x.classList.toggle('active',x.id===tab)); window.scrollTo({top:0,behavior:'smooth'}); }
 document.getElementById('nav').addEventListener('click',e=>{if(e.target.dataset.tab)go(e.target.dataset.tab);});
 
+/* ---------- KEYBOARD SHORTCUT: press 'n' to quick-add a task ---------- */
+document.addEventListener('keydown', e=>{
+  if(e.key!=='n' && e.key!=='N') return;
+  const tag=(e.target.tagName||'').toLowerCase();
+  if(tag==='input'||tag==='textarea'||tag==='select'||e.target.isContentEditable) return;
+  const activeSection=document.querySelector('section.active');
+  const validPages=['tasks','outreach','marketing'];
+  let key = activeSection && validPages.includes(activeSection.id) ? activeSection.id : null;
+  if(!key){ go('tasks'); key='tasks'; }
+  const form=document.getElementById('addform-'+key);
+  if(form && !form.classList.contains('open')) toggleAddForm(key);
+  const titleField=document.getElementById('new-'+key+'-title');
+  if(titleField) titleField.focus();
+  e.preventDefault();
+});
+
+/* ---------- RENDER EVERYTHING (used after undo / merge) ---------- */
+function renderEverything(){
+  renderAllTaskPages(); renderGoals(); renderLog(); renderDecisionsFull(); renderQuestions(); rerenderDash();
+}
+
 /* ---------- INIT ---------- */
-renderAllTaskPages(); renderGoals(); renderLog(); renderDecisions(); renderQuestions(); rerenderDash();
+renderAllTaskPages(); renderGoals(); renderLog(); renderDecisionsFull(); renderQuestions(); rerenderDash();
 tryReconnect();
 </script>
 </body>
