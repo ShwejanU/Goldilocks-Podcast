@@ -13,7 +13,12 @@ Alive
 
 Passed
 - life timeline
+  
+Married 
+Single
+Divorced
 
+Ethnicity
 - Shwejan
 	- Best friend 
 	- Friend 
