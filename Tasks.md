@@ -21,22 +21,9 @@
 
 ---
 
-## 🎛️ Equipment
 
-- [ ] Decide & buy microphones — Samson Q2U ×3 (~$60–70 each) `@?`
-- [ ] Everyone tests mic + confirms quiet recording space `@?`
 
-## 💻 Recording
 
-- [ ] Set up Zencastr free account (shared login) `@?`
-- [ ] Do a 10-min throwaway test record with all three `@?`
-
-## 🎨 Format & Brand
-
-- [ ] Confirm @goldilocks handle availability on IG/TikTok/YouTube/X `@?`
-- [ ] Write one-sentence show description `@?`
-- [ ] Create 3000×3000 cover art in Canva `@Nikki`
-- [ ] Define standard episode structure (intro → life-stage arc → outro) `@?`
 
 ## 📡 Distribution & Admin
 
@@ -44,18 +31,9 @@
 - [ ] Shared password store (Bitwarden) for all logins `@?`
 - [ ] Adopt a one-page guest release form (sign before every record) `@?`
 
-## 🧠 Prep System
-
-- [ ] Build guest-research template (questions grouped by life stage) `@?`
-- [ ] Write a life-stage question bank (5–8 per stage) `@?`
-- [ ] Create a pre-record checklist `@Nikki`
-
 ## 🎚️ Editing (Nikki's lane)
 
-- [x] Install Descript + fallback (GarageBand/Audacity) `@Nikki` (done: 2026-07-19)
-- [ ] Edit a 5-min practice clip `@Nikki`
-- [ ] Define the editing workflow / SOP `@Nikki`
-- [ ] Create episode publishing checklist `@Nikki`
+- [ ] Figure out what tools/platform we are using to do editing
 
 ---
 
@@ -65,25 +43,14 @@ Guest Pipeline Tracker-
 **[https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit](https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit)** 
 
 - [x] Build the guest pipeline tracker `@Nikki?`
-- [ ] Draft reusable outreach templates (cold / warm-intro / follow-up) `@?`
-- [ ] Pick guest #1 (friendly, reachable first-layer person) `@?`
-- [ ] Find contact info for first 5 targets `@?`
-- [ ] Send first messages to 8 leads `@?`
-- [ ] Ask every guest for 2 intros (ongoing) `@?`
+- [ ] Send emails?
 
 ## 📣 Marketing
 
-- [ ] Lock the same @handle on all platforms `@?`
-- [ ] Set up profiles + link-in-bio `@?`
-- [ ] Create the YouTube channel `@?`
-- [ ] Build the per-episode clip workflow (3–5 clips + audiogram) `@Nikki`
-- [ ] Write caption + hashtag bank `@?`
-- [ ] Set up a free scheduler (Buffer/Later) `@?`
-- [ ] Guest amplification kit (clips + captions to send guests) `@?`
-- [ ] Start collecting emails day one `@?`
+- [ ] Create Youtube channel?
 
 ---
 
 ## 🤔 Open questions (need a team decision)
 
-- Who is guest #1?
+- 
