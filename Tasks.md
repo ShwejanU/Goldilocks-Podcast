@@ -39,4 +39,4 @@ Guest Pipeline Tracker-
 ## 🤔 Open questions (need a team decision)
 
 
-I built an agent that pulls data from Obsidian and pushes updates/ to-dos for the day, and send that out at 8:04am every single day. This will be very helpful to us so we don't have to 1) just have our to-dos on our imessage wallpaper (hello?) and can actually act on them, and have a clear updating system. Just go ahead
+I built an agent that pulls data from Obsidian and pushes updates/ to-dos for the day, and send that out at 8:04am every single day. This will be very helpful to us so we don't have to 1) just have our to-dos on our imessage wallpaper (hello?) and can actually act on them, and have a clear updating system. Just go ahead and add your to-do's and ANY update and ANY questions you have, and it will push it to slack so we can start focusing on what actually needs to be done. 
