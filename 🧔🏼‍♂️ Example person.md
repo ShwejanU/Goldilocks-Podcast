@@ -1,8 +1,10 @@
 ---
 tags:
   - passed
-  - "#excalidraw"
+  - uga
 ---
+#uga 
+
 **Intent**: 
 Why are we moved by his story? 
 ___
@@ -10,6 +12,8 @@ Prep: what to read and watch beforehand
 
 Timeline:
 Of their story 
+
+
 ![[Example Person Timeline]]
 
 

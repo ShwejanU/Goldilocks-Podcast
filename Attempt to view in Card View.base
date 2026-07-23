@@ -3,6 +3,8 @@ views:
     name: Table
   - type: cards
     name: Card
+    order:
+      - excalidraw-plugin
     cardSize: 180
     imageAspectRatio: 1.8
     imageFit: contain

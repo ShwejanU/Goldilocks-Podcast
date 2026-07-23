@@ -19,6 +19,7 @@ Single
 Divorced
 
 Ethnicity
+
 - Shwejan
 	- Best friend 
 	- Friend 
