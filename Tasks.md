@@ -20,34 +20,19 @@
 - [ ] Weekly cadence sustained 1 month — **by 2026-10-31**
 
 ---
-
-
-
-
-
-## 📡 Distribution & Admin
-
-- [ ] Create Spotify for Creators account + RSS, submit to Apple `@?`
-- [ ] Shared password store (Bitwarden) for all logins `@?`
-- [ ] Adopt a one-page guest release form (sign before every record) `@?`
-
-## 🎚️ Editing (Nikki's lane)
+# To-Do's
 
 - [ ] Figure out what tools/platform we are using to do editing
-
+- [ ] GROUP CALL to plan for first interview
+- [ ] Add to Guest Pipeline Tracker
+- [ ] Start outreach
+- [ ] Create YouTube Channel
 ---
 
-## 📇 Outreach (everyone: 1 action/day minimum)
 
 Guest Pipeline Tracker-
 **[https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit](https://docs.google.com/spreadsheets/d/1Xacqyxsfxn_22Kg74vlIz2crfXvD7W1eIrOAmQLlIe8/edit)** 
 
-- [x] Build the guest pipeline tracker `@Nikki?`
-- [ ] Send emails?
-
-## 📣 Marketing
-
-- [ ] Create Youtube channel?
 
 ---
 
