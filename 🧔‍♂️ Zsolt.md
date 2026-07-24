@@ -1,0 +1,1 @@
+Intent: creator of obsidian excalidraw plugin and it would be so cool to get him on 
