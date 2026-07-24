@@ -46,9 +46,16 @@ ___
 
 
 
-Todos: 
 
 
 
 
-[M] Detailed Bio with important questions by Sunday midnight
+
+
+
+
+
+**Todos:**
+[M] - Detailed Bio with important questions by Sunday midnight
+[N] - 
+[S] - 
