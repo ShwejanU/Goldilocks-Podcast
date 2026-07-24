@@ -1,5 +1,3 @@
-
-
 **Find talent FAMOUS people**
 Reach out to them (likelihood of response is low this way) 
 
