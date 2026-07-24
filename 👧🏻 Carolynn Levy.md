@@ -1,8 +1,5 @@
-**Keep within ORG** 
+intent: 
+sounds cool 
+___
+> created the financial instrument **SAFE note** 
 
-
-# Journalist Tools
-
-
-# OSINT 
-[http://start.me/p/L1rEYQ/osint4all](http://start.me/p/L1rEYQ/osint4all)
