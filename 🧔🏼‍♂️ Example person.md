@@ -1,12 +1,17 @@
 ---
 tags:
   - passed
-  - uga
 ---
-#uga 
-
 **Intent**: 
 Why are we moved by his story? 
+___
+usernames: 
+- fb 
+- twitter 
+- gmail 
+- reddit
+- instagram
+- email
 ___
 Prep: what to read and watch beforehand 
 
