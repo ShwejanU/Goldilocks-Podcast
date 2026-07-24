@@ -12,5 +12,5 @@ Aggregated Site of all open source public record information
 
 [http://start.me/p/L1rEYQ/osint4all](http://start.me/p/L1rEYQ/osint4all)
 
-Be safe on the individual sites on this link. 
+Be safe on the individual sites on this link.  BRO
 **Excercise proper safety hygiene.** 
