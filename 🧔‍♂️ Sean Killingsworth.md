@@ -5,3 +5,4 @@ Founder of Reconnect
 
 Questions
 retention? 
+Whats the hardest part of building all these chapters in multiple schools been for you?
