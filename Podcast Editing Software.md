@@ -1,28 +1,16 @@
 
 
-| Software | Audicity (with Claude community built plug in) | Adobe (creative cloud + claude connector) | Descript                                                                                       |
-| -------- | ---------------------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Price    | FREE                                           | $23/month NO FREE                         | Available for free, but free version is limited to 1 media hour per month, 100 AI credits, etc |
-|          |                                                |                                           |                                                                                                |
+| Software           | Audicity (with Claude community built plug in)       | Adobe (creative cloud + claude connector)                                        | Descript                                                                                       |
+| ------------------ | ---------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Price              | FREE                                                 | $23/month NO FREE                                                                | Available for free, but free version is limited to 1 media hour per month, 100 AI credits, etc |
+| Claude Integration | Community built connector, we would self host it     | Official Anthropic connector, lots of additional tools (Premiere, Audition, etc) | Official Anthropic connector                                                                   |
+| Setup              | High, have to enable scripting and run MCP ourselves | Medium, connect Adobe account, learn which app tier Claude could help with       | Lowest, built for this workflow                                                                |
+| Editing power      |                                                      |                                                                                  |                                                                                                |
 
-1
-Audacity + community MCPFree
+What we can do with connector
 
-Adobe (Creative Cloud + Claude connector)From ~$23/mo (Creative Cloud)
 
-DescriptFree tier; paid ~$16–$35/mo
 
-Claude integrationUnofficial — community-built connector; you self-host it
-
-Claude integrationOfficial Anthropic connector, 50+ tools across Premiere, Audition, Podcast, Express
-
-Claude integrationOfficial Anthropic connector — import media, run edit prompts, manage jobs
-
-Setup effortHighest — install Audacity, enable scripting, run the MCP server yourself
-
-Setup effortMedium — connect the Adobe account, learn which app tier Claude actually reaches
-
-Setup effortLowest — built for exactly this workflow
 
 Editing powerSolid manual multi-track editing; AI cleanup depends on the connector's scripts
 
