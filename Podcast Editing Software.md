@@ -10,7 +10,7 @@
 
 I'm leaning towards Audacity. The other options are pricey, and just require less effort than Audacity (why the investment is higher)
 	- No AI transcription or text-based editing (you can't "delete this sentence" and have it cut the audio — you're working with waveforms directly)
-- No automatic filler-word removal, no AI noise cleanup as polished as newer tools
-- The interface looks a bit dated and can feel less guided for a total beginner at first, though it's not hard once you get the hang of it
-. I'm willing to learn how to use Audacity, and with Claude we can definetely learn how to best edit the episodes with peak quality. Audacity is open source, free forever, no watermarks. 
+	- No automatic filler-word removal, no AI noise cleanup as polished as newer tools
+	- The interface looks a bit dated and can feel less guided for a total beginner at first, though it's not hard once you get the hang of it
+I'm willing to learn how to use Audacity, and there is a community plug in for Claude, which I can also learn how to use. Audacity is open source, free forever, no watermarks, which is perfect for us since we are just starting out. We could always switch to Descript (which I like next), once we are more established so that I'm not spending too much time just focusing on editing. 
 What we can do with connector?
