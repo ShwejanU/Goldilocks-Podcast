@@ -1,4 +1,4 @@
-
+Comparison table-
 
 | Software           | Audicity (with Claude community built plug in)                                           | Adobe (creative cloud + claude connector)                                        | Descript                                                                                                                      |
 | ------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -24,11 +24,8 @@ What we can do with connector for Audacity?
 - Cutting, trimming, applying effects to specific selections
 - Applying things like reverb, EQ adjustments
 - Transcribing audio and adding labels at points in the timeline (e.g., marking sentence boundaries), which is handy for figuring out where to cut
-
-**How it'd actually work for you:**  
-You'd say something like _"clean up this podcast recording, the first half second is just room noise"_ and Claude would run the right sequence of Audacity effects on your behalf — while you can still watch it happen in Audacity's own interface and see exactly what changed.
-
-**The caveats, since you're planning to actually learn editing:**
-
+-CAVEAT-
 - Since this is unofficial/community-built, it requires you to set up Audacity's scripting mode yourself (enabling `mod-script-pipe` in preferences) and it may be less polished or reliable than an official connector
 - If your goal is to genuinely learn the craft, I'd actually hold off on using this heavily at first — do your early episodes manually in Audacity so the fundamentals (why noise reduction works the way it does, what compression is actually doing) stick, then bring in the connector later to speed up repetitive cleanup once you already understand it
+
+WILL TAKE TIME TO LEARN. There is Audacity's manual, plenty of YouTube videos, and a forum if I need help. I'll start with interface basics
