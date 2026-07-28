@@ -10,6 +10,10 @@ TWELVE THOUSAND HOLY SHIT!!!
 
 Physical Places we can go:
 YC coworking space
+the portal for yc founders (they can refer you here)
+https://bookface.ycombinator.com
+
+YC fellowship
 ___
 
 # [Story](https://wikiyc.com/):
