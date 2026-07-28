@@ -12,7 +12,7 @@
 
 ## 🎯 Goals (targets)
 
-- [ ] Schedule interview with 
+- [ ] Reschedule interview with Sean Killingsworth
 
 ---
 # To-Do's
