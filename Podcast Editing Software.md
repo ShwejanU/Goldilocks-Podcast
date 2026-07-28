@@ -8,5 +8,9 @@
 | Editing power      | Great (manual multi-track editing), connector can help out as long as script is specific | Pro grade                                                                        | Text based editing (edit audio by editing a transcript), filler word removal, multi track                                     |
 | Best for           | Free, DIY, control over every step                                                       | Teams with pro tools and has video capabilities                                  | Least setup friction                                                                                                          |
 
-I'm leaning towards Aud
+I'm leaning towards Audacity. The other options are pricey, and just require less effort than Audacity (why the investment is higher)
+	- No AI transcription or text-based editing (you can't "delete this sentence" and have it cut the audio — you're working with waveforms directly)
+- No automatic filler-word removal, no AI noise cleanup as polished as newer tools
+- The interface looks a bit dated and can feel less guided for a total beginner at first, though it's not hard once you get the hang of it
+. I'm willing to learn how to use Audacity, and with Claude we can definetely learn how to best edit the episodes with peak quality. Audacity is open source, free forever, no watermarks. 
 What we can do with connector?
