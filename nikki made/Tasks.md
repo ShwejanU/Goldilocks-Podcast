@@ -12,12 +12,7 @@
 
 ## 🎯 Goals (targets)
 
-- [ ] First test episode recorded — **by 2026-08-08**
-- [ ] Brand basics locked (name, description, cover art, hosting) — **by 2026-08-15**
-- [ ] Episode 1 published — **by 2026-08-22**
-- [ ] Guest pipeline: 15 warm leads, 8+ messaged — **by 2026-08-29**
-- [ ] 5 episodes published — **by 2026-10-03**
-- [ ] Weekly cadence sustained 1 month — **by 2026-10-31**
+- [ ] Reschedule interview with Sean Killingsworth
 
 ---
 # To-Do's
