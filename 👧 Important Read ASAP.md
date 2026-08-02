@@ -40,3 +40,6 @@ Thank you nikitha, for changing my bleak perspective, for caring so deeply and k
 Happy girlfriends day to my favorite “fake” girlfriend. 
 
 
+Shwejan, I love you so much. This is the sweetest note/message I've ever gotten, and I will keep this in my notes forever. I love you so so so much, and I checked back with HR, they approved on promotion. When will I be receiving an official prootion letter? 
+
+-Nikki
