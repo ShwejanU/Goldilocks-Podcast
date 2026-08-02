@@ -45,6 +45,7 @@ Location(s)
 
 Interests:
 - math 
+- Social Impact
 - Sports 
 	- Football (american)
 
