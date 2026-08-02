@@ -1,2 +1,2 @@
 Phenomenal movie director
-Who is inspiration to Christian Nolan 
+Who is inspiration to Christopher Nolan 
