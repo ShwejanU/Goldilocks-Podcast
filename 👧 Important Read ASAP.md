@@ -43,3 +43,24 @@ Happy girlfriends day to my favorite “fake” girlfriend.
 Shwejan, I love you so much. This is the sweetest note/message I've ever gotten, and I will keep this in my notes forever. I can be the tornado to your hurricane. Tornados move 2-3x as fast as hurricanes, which means I'm more efficient :). I love you so so so much, and I checked back with HR, they approved on promotion. When will I be receiving an official promotion letter? 
 
 -Nikki
+
+
+October 4 
+
+
+Hello shwejan 👋! 
+
+Happy national boyfriend's day to my BEST FRIEND FOREVER. I am so incredibly grateful to have you in my life, as my best friend, my lover, someone I can call in ANY situation, someone my mom calls son-in-law, someone my father respects, someone who has genuinly helped me grow in every aspect of my life to become the woman I am today. 
+
+**Thank you***
+
+Just as you were, I have always been scared that my efforts to try for a relationship would not be worth it. That anyone would not care the way I do, or even reciporacte that to the slightest. I had only the "societal" idea of love. But you showed me that that kind of "societal" love isn't something I want or need to feel loved. You showed me TRUE love. Love in the aspect of always being there for me, always showign up for me, never giving up, and caring for me in a way NO one else has. No matter what happens Shwejan, I will ALWAYS be grateful for you. You showed me that I do deserve love, and that the kind of love we have is somehing that no one else can replicate. 
+
+Shwejan, I mean this when I say it. I love you. I already consider you my husband in my head, no matter how insane or "too much" it might sound. I know it's been a little hard lately, but I know even more now than ever, how worth it it will be. 
+
+Did you know that hurricanes have a calm center called the eye? It's where the winds drop to a certain calmness. That's what you are to me. The eye to my hurricane. I couldn't use tornado cuz tornado's don't have "eye" LOL. 
+
+Thank you shwejan, for changing my life. 
+
+Happy boyfriend's day to my favorite “fake” dark chocolate boyfriend.  
+
