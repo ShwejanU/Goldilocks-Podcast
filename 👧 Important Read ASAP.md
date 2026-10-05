@@ -54,7 +54,7 @@ Happy national boyfriend's day to my BEST FRIEND FOREVER. I am so incredibly gra
 
 **Thank you***
 
-Just as you were, I have always been scared that my efforts to try for a relationship would not be worth it. That anyone would not care the way I do, or even reciporacte that to the slightest. I had only the "societal" idea of love. But you showed me that that kind of "societal" love isn't something I want or need to feel loved. You showed me TRUE love. Love in the aspect of always being there for me, always showign up for me, never giving up, and caring for me in a way NO one else has. No matter what happens Shwejan, I will ALWAYS be grateful for you. You showed me that I do deserve love, and that the kind of love we have is somehing that no one else can replicate. 
+Just as you were, I have always been scared that my efforts to try for a relationship would not be worth it. That anyone would not care the way I do, or even reciporacte that to the slightest. I had only the "societal" idea of love. But you showed me that that kind of "societal" love isn't something I want or need to feel loved. You showed me TRUE love. Love in the aspect of always being there for me, always showing up for me, never giving up, and caring for me in a way NO one else has. No matter what happens Shwejan, I will ALWAYS be grateful for you. You showed me that I do deserve love, and that the kind of love we have is somehing that no one else can replicate. 
 
 Shwejan, I mean this when I say it. I love you. I already consider you my husband in my head, no matter how insane or "too much" it might sound. I know it's been a little hard lately, but I know even more now than ever, how worth it it will be. 
 
